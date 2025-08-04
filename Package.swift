@@ -5,7 +5,7 @@ let package = Package(
     name: "AppAboutView",
     defaultLocalization: "en",
     platforms: [
-        .macOS(.v15),
+        .macOS(.v14),
         .iOS(.v17),
         .tvOS(.v17),
         .visionOS(.v1)
