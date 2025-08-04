@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Russian)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Версия %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Политика конфиденциальности";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Отправить отзыв";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Благодарности";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "Оценить приложение";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "О приложении";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Мои приложения";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Нет доступных приложений";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Поддержать разработчика";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Угостить кофе";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Угостить %d чашками кофе";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Спасибо!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Спасибо за поддержку разработки! Ваш вклад очень ценен.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "ОК";

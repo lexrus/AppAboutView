@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Korean)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "버전 %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "개인정보 처리방침";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "피드백 보내기";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "감사의 말";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "앱 평가하기";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "앱 정보";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "내 앱";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "사용 가능한 앱이 없습니다";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "개발자 후원";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "커피 한 잔 사주기";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "커피 %d잔 사주기";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "감사합니다!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "개발을 후원해 주셔서 감사합니다! 여러분의 기여에 진심으로 감사드립니다.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "확인";

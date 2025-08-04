@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Chinese Simplified)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "版本 %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "隐私政策";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "提供反馈";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "致谢";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "评价应用";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "关于";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "我的应用";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "没有可用的应用";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "支持开发者";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "请我喝杯咖啡";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "请我喝 %d 杯咖啡";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "谢谢！";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "感谢您的支持！您的贡献非常珍贵。";
+
+/* OK button for alert */
+"AppAboutView.OK" = "好的";

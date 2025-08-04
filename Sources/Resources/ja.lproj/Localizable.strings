@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Japanese)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "バージョン %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "プライバシーポリシー";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "フィードバックを送る";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "謝辞";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "アプリを評価";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "このアプリについて";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "私のアプリ";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "利用可能なアプリがありません";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "開発者をサポート";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "コーヒー1杯分の応援";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "コーヒーを %d 杯おごってください";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "ありがとうございます！";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "開発をサポートしていただきありがとうございます！あなたの貢献に心から感謝いたします。";
+
+/* OK button for alert */
+"AppAboutView.OK" = "OK";

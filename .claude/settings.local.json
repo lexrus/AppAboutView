@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(touch:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(nm:*)",
+      "Bash(rg:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(echo:*)",
+      "Bash(swift:*)",
+      "Bash(lldb:*)",
+      "Bash(open:*)",
+      "Bash(ps:*)",
+      "Bash(pkill:*)",
+      "Bash(kill:*)",
+      "Bash(ls:*)",
+      "Bash(tuist:*)",
+      "Bash(git:*)",
+      "WebFetch(domain:developer.apple.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(cp:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(bash:*)",
+      "Bash(ln:*)",
+      "Bash(find:*)",
+      "Bash(cp:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(yamllint:*)"
+    ],
+    "deny": []
+  }
+}

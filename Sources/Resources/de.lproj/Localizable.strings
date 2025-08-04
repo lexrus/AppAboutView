@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (German)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Version %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Datenschutzrichtlinie";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Feedback geben";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Danksagungen";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "App bewerten";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "Über";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Meine Apps";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Keine Apps verfügbar";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Entwickler unterstützen";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Spendiere mir einen Kaffee";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Spendiere mir %d Kaffees";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Vielen Dank!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Vielen Dank für die Unterstützung der Entwicklung! Ihr Beitrag wird sehr geschätzt.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "OK";

@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-03T00:00:00Z",
+  "apps": [
+    {
+      "id": "sharptooth",
+      "name": "Sharptooth",
+      "briefDescription": {
+        "en": "Effortlessly manage your Bluetooth devices right from the menu bar with custom hotkeys and smart automation.",
+        "de": "Verwalten Sie Ihre Bluetooth-Geräte mühelos direkt über die Menüleiste mit benutzerdefinierten Hotkeys und intelligenter Automatisierung.",
+        "es": "Gestiona sin esfuerzo tus dispositivos Bluetooth directamente desde la barra de menús con atajos personalizados y automatización inteligente.",
+        "fr": "Gérez facilement vos appareils Bluetooth directement depuis la barre de menus avec des raccourcis personnalisés et une automatisation intelligente.",
+        "it": "Gestisci facilmente i tuoi dispositivi Bluetooth direttamente dalla barra dei menu con tasti di scelta rapida personalizzati e automazione intelligente.",
+        "ja": "カスタムホットキーとスマート自動化機能で、メニューバーから簡単にBluetoothデバイスを管理。",
+        "ko": "사용자 정의 단축키와 스마트 자동화 기능으로 메뉴 바에서 바로 Bluetooth 장치를 손쉽게 관리하세요.",
+        "ru": "Легко управляйте Bluetooth-устройствами прямо из строки меню с помощью пользовательских горячих клавиш и умной автоматизации.",
+        "zh-Hans": "轻松使用自定义热键和智能自动化功能，直接从菜单栏管理蓝牙设备。",
+        "zh-Hant": "輕鬆使用自訂熱鍵和智慧自動化功能，直接從選單列管理藍牙裝置。"
+      },
+      "appStoreID": "6748440814",
+      "platforms": ["macOS"]
+    },
+    {
+      "id": "liveextractor",
+      "name": "LiveExtractor",
+      "briefDescription": {
+        "en": "Extract individual photos and videos from your Live Photos across all your Apple devices.",
+        "de": "Extrahieren Sie einzelne Fotos und Videos aus Ihren Live Photos auf allen Ihren Apple-Geräten.",
+        "es": "Extrae fotos y videos individuales de tus Live Photos en todos tus dispositivos Apple.",
+        "fr": "Extrayez des photos et vidéos individuelles de vos Live Photos sur tous vos appareils Apple.",
+        "it": "Estrai singole foto e video dalle tue Live Photos su tutti i tuoi dispositivi Apple.",
+        "ja": "すべての Apple デバイスで Live Photos から個別の写真とビデオを抽出。",
+        "ko": "모든 Apple 기기에서 Live Photos로부터 개별 사진과 동영상을 추출하세요.",
+        "ru": "Извлекайте отдельные фотографии и видео из ваших Live Photos на всех устройствах Apple.",
+        "zh-Hans": "在所有 Apple 设备上从 Live Photos 中提取单独的照片和视频。",
+        "zh-Hant": "在所有 Apple 裝置上從 Live Photos 中提取單獨的照片和影片。"
+      },
+      "appStoreID": "6746672642",
+      "platforms": ["iOS", "iPadOS", "macOS", "visionOS", "tvOS"]
+    },
+    {
+      "id": "swiftymenu",
+      "name": "SwiftyMenu",
+      "briefDescription": {
+        "en": "A Finder extension which presents a customizable menu to rapidly open selected folders or files with your favorite applications.",
+        "de": "Eine Finder-Erweiterung, die ein anpassbares Menü bietet, um ausgewählte Ordner oder Dateien schnell mit Ihren Lieblings-Apps zu öffnen.",
+        "es": "Una extensión de Finder que presenta un menú personalizable para abrir rápidamente carpetas o archivos seleccionados con tus aplicaciones favoritas.",
+        "fr": "Une extension Finder qui présente un menu personnalisable pour ouvrir rapidement les dossiers ou fichiers sélectionnés avec vos applications préférées.",
+        "it": "Un'estensione di Finder che presenta un menu personalizzabile per aprire rapidamente cartelle o file selezionati con le tue applicazioni preferite.",
+        "ja": "選択したフォルダやファイルをお気に入りのアプリケーションで素早く開くためのカスタマイズ可能なメニューを提供する Finder 拡張機能。",
+        "ko": "선택한 폴더나 파일을 좋아하는 애플리케이션으로 빠르게 열 수 있는 사용자 정의 메뉴를 제공하는 Finder 확장 프로그램입니다.",
+        "ru": "Расширение Finder, которое предоставляет настраиваемое меню для быстрого открытия выбранных папок или файлов вашими любимыми приложениями.",
+        "zh-Hans": "一个 Finder 扩展，提供可自定义菜单，快速用您喜爱的应用程序打开选定的文件夹或文件。",
+        "zh-Hant": "一個 Finder 擴充功能，提供可自訂選單，快速用您喜愛的應用程式開啟選定的檔案夾或檔案。"
+      },
+      "appStoreID": "1567748223",
+      "platforms": ["macOS"]
+    },
+    {
+      "id": "regexplus",
+      "name": "RegEx+",
+      "briefDescription": {
+        "en": "An app to test your regular expressions with live matching.",
+        "de": "Eine App zum Testen Ihrer regulären Ausdrücke mit Live-Übereinstimmung.",
+        "es": "Una aplicación para probar tus expresiones regulares con coincidencias en vivo.",
+        "fr": "Une application pour tester vos expressions régulières avec correspondance en direct.",
+        "it": "Un'app per testare le tue espressioni regolari con corrispondenza in tempo reale.",
+        "ja": "正規表現をライブマッチング機能でテストするマルチプラットフォームアプリ。",
+        "ko": "실시간 매칭 기능으로 정규 표현식을 테스트하는 애플리케이션입니다.",
+        "ru": "Приложение для тестирования регулярных выражений с живым сопоставлением.",
+        "zh-Hans": "一个用于测试正则表达式的多平台应用程序，支持实时匹配。",
+        "zh-Hant": "一個用於測試正規表示式的多平台應用程式，支援即時匹配。"
+      },
+      "appStoreID": "1511763524",
+      "platforms": ["iOS", "iPadOS", "macOS"]
+    }
+  ]
+}

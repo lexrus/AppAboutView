@@ -1,0 +1,150 @@
+# SwiftLint Configuration for AppAboutView
+
+# Rules to disable
+disabled_rules:
+  - function_body_length # SwiftUI views can have longer bodies
+  - type_body_length # SwiftUI views may need more properties
+  - file_header # Allow files without headers
+  - file_length # SwiftUI views may need more lines
+
+# Rules to enable
+opt_in_rules:
+  - array_init
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - enum_case_associated_values_count
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - file_header
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - last_where
+  - legacy_random
+  - literal_expression_end_indentation
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - nimble_operator
+  - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - overridden_super_call
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - strict_fileprivate
+  - switch_case_alignment
+  - toggle_bool
+  - trailing_closure
+  - unneeded_parentheses_in_closure_argument
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - yoda_condition
+
+# Paths to include/exclude
+included:
+  - Sources
+  - Tests
+
+excluded:
+  - .build
+  - Package.swift
+
+# Rule configurations
+attributes:
+  always_on_same_line:
+    - "@discardableResult"
+    - "@objc"
+  always_on_line_above:
+    - "@available"
+
+closure_spacing:
+  severity: error
+
+collection_alignment:
+  align_colons: true
+
+empty_count:
+  severity: error
+
+enum_case_associated_values_count:
+  warning: 5
+  error: 6
+
+
+force_unwrapping:
+  severity: warning
+
+identifier_name:
+  min_length: 1 # Allow single letter variable names
+  max_length: 50
+  excluded:
+    - id
+    - x
+    - y
+    - z
+
+line_length:
+  warning: 120
+  error: 150
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_comments: true
+
+multiline_arguments:
+  first_argument_location: next_line
+  only_enforce_after_first_closure_on_first_line: true
+
+nesting:
+  type_level: 2
+  function_level: 2
+
+number_separator:
+  minimum_length: 5
+
+trailing_comma:
+  mandatory_comma: true
+
+trailing_whitespace:
+  ignores_empty_lines: false
+  ignores_comments: true
+
+type_name:
+  min_length: 3
+  max_length: 50
+  excluded:
+    - ID
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+# Custom rules
+custom_rules:
+  # Prefer localized strings over hardcoded strings
+  localized_string:
+    name: "Localized String"
+    regex: 'Text\("([^"]*[A-Za-z]{2,}[^"]*)"\)'
+    match_kinds:
+      - string
+    message: "Consider using localized strings with String(localized:bundle:) instead of hardcoded strings"
+    severity: warning
+
+  # Ensure proper spacing around operators
+  operator_whitespace:
+    name: "Operator Whitespace"
+    regex: '(\w|\))\+(\w|\()|(\w|\))-(\w|\()|(\w|\))\*(\w|\()|(\w|\))\/(\w|\()'
+    message: "Operators should be surrounded by whitespace"
+    severity: warning
