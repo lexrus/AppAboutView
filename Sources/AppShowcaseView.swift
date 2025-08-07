@@ -20,7 +20,18 @@ public struct AppShowcaseView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 4) {
+            #if os(macOS)
+            HStack(alignment: .center) {
+                Spacer()
+                Text(String(localized: "AppAboutView.MyApps", bundle: .module))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .opacity(0.5)
+                Spacer()
+            }
+            #endif
+
             if showcaseService.apps.isEmpty {
                 EmptyStateView()
             } else {
@@ -39,6 +50,13 @@ public struct AppShowcaseView: View {
                 }
             }
         }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
         .onAppear {
             showcaseService.fetchRemoteAppsIfNeeded()
         }
@@ -66,25 +84,36 @@ struct AppShowcaseItemView: View {
     let app: MyAppInfo
     let onTap: () -> Void
 
+    @State private var isHovered = false
+
     var body: some View {
         Button(action: onTap) {
             HStack(spacing: 12) {
                 // App Icon
-                if let image = loadAppIcon() {
-                    image
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 1)
-                } else {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.secondary.opacity(0.3))
-                        .frame(width: 40, height: 40)
-                        .overlay {
-                            Image(systemName: "app.fill")
-                                .foregroundColor(.secondary)
-                        }
-                        .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 1)
+                VStack {
+                    if let image = loadAppIcon() {
+                        image
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .shadow(
+                                color: isHovered ? Color.blue.opacity(0.3) : .black.opacity(0.15),
+                                radius: isHovered ? 10 : 3,
+                                x: 0,
+                                y: isHovered ? 5 : 1
+                            )
+                            .animation(.easeInOut(duration: 0.15), value: isHovered)
+                    } else {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.secondary.opacity(0.3))
+                            .frame(width: 40, height: 40)
+                            .overlay {
+                                Image(systemName: "app.fill")
+                                    .foregroundColor(.secondary)
+                            }
+                            .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 1)
+                    }
+                    Spacer()
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
@@ -92,6 +121,13 @@ struct AppShowcaseItemView: View {
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
+                        .shadow(
+                            color: isHovered ? Color.blue.opacity(0.5) : .clear,
+                            radius: isHovered ? 5 : 0,
+                            x: 0,
+                            y: 1
+                        )
+                        .animation(.easeInOut(duration: 0.15), value: isHovered)
 
                     Text(app.briefDescription.localizedString)
                         .font(.caption)
@@ -115,6 +151,9 @@ struct AppShowcaseItemView: View {
             .padding(.vertical, 8)
         }
         .buttonStyle(.plain)
+        .onHover { hovering in
+            isHovered = hovering
+        }
     }
 
     private func loadAppIcon() -> Image? {
@@ -166,6 +205,9 @@ struct EmptyStateView: View {
 
 
 #Preview {
-    AppShowcaseView(currentAppStoreID: "6748440814") // Test filtering with Sharptooth's ID
-        .frame(width: 400, height: 600)
+    ZStack {
+        AppShowcaseView(currentAppStoreID: "6748440814") // Test filtering with Sharptooth's ID
+            .frame(width: 400, height: 600)
+    }
+    .padding()
 }

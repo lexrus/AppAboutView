@@ -10,7 +10,7 @@ import UIKit
 #endif
 
 public struct AppAboutView: View {
-    @State private var showingThankYouAlert = false
+    @State internal var showingThankYouAlert = false
     let appName: String
     let appIcon: Image?
     let appVersion: String
@@ -50,108 +50,33 @@ public struct AppAboutView: View {
     }
 
     public var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 20) {
-                // App Icon and Version
-                VStack(spacing: 12) {
-                    if let appIcon = appIcon {
-                        appIcon
-                            .resizable()
-                            .frame(width: 96, height: 96)
-                            .clipShape(RoundedRectangle(cornerRadius: platformCornerRadius))
-                    } else {
-                        defaultAppIcon
-                            .frame(width: 96, height: 96)
-                    }
-
-                    Text(appName)
-                        .font(.largeTitle)
-                        .fontWeight(.medium)
-
-                    Text(String(format: String(localized: "AppAboutView.Version", bundle: .module), appVersion, buildVersion))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .padding(.top)
-
-                // Actions Form
-                VStack(spacing: 0) {
-                    let buttons = buildSettingsButtons()
-                    ForEach(Array(buttons.enumerated()), id: \.offset) { index, button in
-                        button
-
-                        if index < buttons.count - 1 {
-                            Divider()
-                                .opacity(0.5)
-                                .padding(.init(top: 4, leading: 32, bottom: 4, trailing: 0))
-                        }
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                .padding(.horizontal, formHorizontalPadding)
-                .padding(.vertical, formVerticalPadding)
-                .background(formBackgroundColor)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(formBorderColor, lineWidth: formBorderWidth)
-                )
-
-                // Coffee Tips Section
-                if let coffeeTips = coffeeTips, !coffeeTips.isEmpty {
-                    buildCoffeeTipsSection()
-                }
-
-                // App Showcase Section
-
-                Text(String(localized: "AppAboutView.MyApps", bundle: .module))
-                    .font(.headline)
-                    .fontWeight(.medium)
-
-                AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
-                    .padding(.horizontal, formHorizontalPadding)
-                    .padding(.vertical, formVerticalPadding)
-                    .background(formBackgroundColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(formBorderColor, lineWidth: formBorderWidth)
-                    )
-
-                // Copyright
-                if let copyrightText = copyrightText {
-                    Text(copyrightText)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .padding(.bottom)
-                }
-            }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 30)
-        }
-        .navigationTitle(
-            String(localized: "AppAboutView.About", bundle: .module)
-        )
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .alert(
-            String(localized: "AppAboutView.ThankYou", bundle: .module),
-            isPresented: $showingThankYouAlert
-        ) {
-            Button(String(localized: "AppAboutView.OK", bundle: .module)) { }
-        } message: {
-            Text(String(localized: "AppAboutView.ThankYouMessage", bundle: .module))
-        }
+#if os(macOS)
+        buildMacOSLayout()
+#else
+        buildNormalLayout()
+#endif
     }
+
 
     // MARK: - Private Properties
 
     @ViewBuilder
-    private func buildCoffeeTipsSection() -> some View {
+    internal func buildCoffeeTipsSection() -> some View {
         VStack(spacing: 12) {
+#if !os(macOS)
             Text(String(localized: "AppAboutView.SupportDeveloper", bundle: .module))
                 .font(.headline)
                 .fontWeight(.medium)
+#endif
 
+#if os(macOS)
+            VStack(spacing: 12) {
+                let coffeeTipButtons = buildCoffeeTipButtons()
+                ForEach(Array(coffeeTipButtons.enumerated()), id: \.offset) { index, button in
+                    button
+                }
+            }
+#else
             VStack(spacing: 0) {
                 let coffeeTipButtons = buildCoffeeTipButtons()
                 ForEach(Array(coffeeTipButtons.enumerated()), id: \.offset) { index, button in
@@ -173,15 +98,25 @@ public struct AppAboutView: View {
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(formBorderColor, lineWidth: formBorderWidth)
             )
+#endif
         }
     }
 
-    @ViewBuilder
-    private func buildCoffeeTipButtons() -> [AnyView] {
+    internal func buildCoffeeTipButtons() -> [AnyView] {
         guard let coffeeTips = coffeeTips else { return [] }
 
         return coffeeTips.enumerated().map { index, productID in
             let displayName = generateCoffeeTipDisplayName(for: index)
+#if os(macOS)
+            return AnyView(
+                GlassButton(
+                    Text(displayName),
+                    systemImage: "cup.and.saucer.fill"
+                ) {
+                    purchaseCoffeeTip(productID: productID)
+                }
+            )
+#else
             return AnyView(
                 settingsButton(
                     displayName,
@@ -190,10 +125,11 @@ public struct AppAboutView: View {
                     purchaseCoffeeTip(productID: productID)
                 }
             )
+#endif
         }
     }
 
-    private func generateCoffeeTipDisplayName(for index: Int) -> String {
+    internal func generateCoffeeTipDisplayName(for index: Int) -> String {
         let coffeeCount = index + 1
         if coffeeCount == 1 {
             return String(localized: "AppAboutView.BuyMeACoffee", bundle: .module)
@@ -202,7 +138,7 @@ public struct AppAboutView: View {
         }
     }
 
-    private func purchaseCoffeeTip(productID: String) {
+    internal func purchaseCoffeeTip(productID: String) {
         Task {
             do {
                 guard let product = try await Product.products(for: [productID]).first else {
@@ -234,8 +170,7 @@ public struct AppAboutView: View {
         }
     }
 
-    @ViewBuilder
-    private func buildSettingsButtons() -> [AnyView] {
+    internal func buildSettingsButtons() -> [AnyView] {
         var buttons: [AnyView] = []
 
         // Always include Rate on App Store button
@@ -296,7 +231,40 @@ public struct AppAboutView: View {
         return buttons
     }
 
-    private func settingsButton(
+    internal func buildSettingsButtonsForNonMac() -> [AnyView] {
+        var buttons: [AnyView] = []
+
+        // Always include Rate on App Store button
+        buttons.append(AnyView(
+            settingsButton(
+                String(
+                    localized: "AppAboutView.RateOnAppStore",
+                    bundle: .module
+                ),
+                icon: Image(systemName: "hand.thumbsup.fill")
+            ) {
+                openAppStoreURL()
+            }
+        ))
+
+        if feedbackEmail != nil {
+            buttons.append(AnyView(
+                settingsButton(
+                    String(
+                        localized: "AppAboutView.GiveFeedback",
+                        bundle: .module
+                    ),
+                    icon: Image(systemName: "envelope")
+                ) {
+                    openFeedbackURL()
+                }
+            ))
+        }
+
+        return buttons
+    }
+
+    internal func settingsButton(
         _ str: String,
         icon: Image? = nil,
         action: @escaping () -> Void
@@ -322,7 +290,7 @@ public struct AppAboutView: View {
         .buttonStyle(.plain)
     }
 
-    private var platformCornerRadius: CGFloat {
+    internal var platformCornerRadius: CGFloat {
 #if os(macOS)
         return 8
 #else
@@ -330,7 +298,7 @@ public struct AppAboutView: View {
 #endif
     }
 
-    private var formBackgroundColor: Color {
+    internal var formBackgroundColor: Color {
 #if os(macOS)
         return Color(NSColor.controlBackgroundColor)
 #else
@@ -338,7 +306,7 @@ public struct AppAboutView: View {
 #endif
     }
 
-    private var formBorderColor: Color {
+    internal var formBorderColor: Color {
 #if os(macOS)
         return Color(NSColor.separatorColor)
 #else
@@ -346,24 +314,8 @@ public struct AppAboutView: View {
 #endif
     }
 
-    private var formBorderWidth: CGFloat {
-#if os(macOS)
-        return 1
-#else
-        return 1
-#endif
-    }
-
-    private var formHorizontalPadding: CGFloat {
-        16
-    }
-
-    private var formVerticalPadding: CGFloat {
-        8
-    }
-
     @ViewBuilder
-    private var defaultAppIcon: some View {
+    internal var defaultAppIcon: some View {
 #if os(macOS)
         if let nsImage = NSApp.applicationIconImage {
             Image(nsImage: nsImage)
@@ -382,7 +334,7 @@ public struct AppAboutView: View {
 
     // MARK: - Private Methods
 
-    private func openFeedbackURL() {
+    internal func openFeedbackURL() {
         guard let feedbackEmail = feedbackEmail else { return }
 
         let subject = "\(appName)%20Feedback"
@@ -397,7 +349,7 @@ public struct AppAboutView: View {
 #endif
     }
 
-    private func openAppStoreURL() {
+    internal func openAppStoreURL() {
         let urlString = "https://apps.apple.com/app/id\(appStoreID)"
         guard let url = URL(string: urlString) else { return }
 
@@ -408,7 +360,7 @@ public struct AppAboutView: View {
 #endif
     }
 
-    private func openPrivacyPolicyURL() {
+    internal func openPrivacyPolicyURL() {
         guard let privacyPolicy = privacyPolicy else { return }
 
 #if os(macOS)
@@ -462,6 +414,7 @@ public extension AppAboutView {
         appStoreID: "123456789",
         privacyPolicy: URL(string: "https://google.com/privacypolicy/"),
         copyrightText: "©2025 Example Company",
-        coffeeTips: ["coffee.single", "coffee.double", "coffee.triple"]
+        onAcknowledgments: {},
+        coffeeTips: ["coffee.single"]
     )
 }
