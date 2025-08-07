@@ -65,7 +65,7 @@ extension AppAboutView {
                         .foregroundColor(.secondary)
                 }
             }
-            .frame(width: 180)
+            .frame(width: 160)
             .padding(.leading, 30)
             .padding(.vertical, 30)
 
@@ -107,7 +107,7 @@ extension AppAboutView {
         .navigationTitle(
             String(localized: "AppAboutView.About", bundle: .module)
         )
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(minWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
         .alert(
             String(localized: "AppAboutView.ThankYou", bundle: .module),
             isPresented: $showingThankYouAlert

@@ -46,13 +46,13 @@ extension AppAboutView {
                     }
                 }
                 .scrollContentBackground(.hidden)
-                .padding(.horizontal, formHorizontalPadding)
-                .padding(.vertical, formVerticalPadding)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 16)
                 .background(formBackgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(formBorderColor, lineWidth: formBorderWidth)
+                        .stroke(formBorderColor, lineWidth: 1)
                 )
 
                 // Coffee Tips Section
@@ -67,13 +67,11 @@ extension AppAboutView {
                     .fontWeight(.medium)
 
                 AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
-                    .padding(.horizontal, formHorizontalPadding)
-                    .padding(.vertical, formVerticalPadding)
                     .background(formBackgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
-                            .stroke(formBorderColor, lineWidth: formBorderWidth)
+                            .stroke(formBorderColor, lineWidth: 1)
                     )
 
                 // Copyright

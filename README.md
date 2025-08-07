@@ -2,9 +2,7 @@
 
 A comprehensive SwiftUI micro-framework for displaying beautiful "About" views in your macOS and iOS apps. Features automatic bundle detection, in-app purchases for coffee tips, app showcase functionality, and full localization support.
 
-| Light Mode | Dark Mode |
-|------------|-----------|
-| ![Large Light](screenshots/AppAboutView_Size_Large_414x896_Light.png) | ![Large Dark](screenshots/AppAboutView_Size_Large_414x896_Dark.png) |
+![Large Light](screenshots/iOS_screenshots.png)
 
 > ⚠️ **AI Development Notice**: This project was heavily developed using AI tools including [Claude Code](https://claude.ai/code) and [Windsurf](https://windsurf.com/refer?referral_code=bfc775d405). It brings potential legal and ethical concerns, so use it with caution and always review the generated code.
 
@@ -39,7 +37,7 @@ Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "path/to/AppAboutView", from: "0.0.1")
+    .package(url: "path/to/AppAboutView", from: "0.0.2")
 ]
 ```
 

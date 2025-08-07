@@ -90,13 +90,13 @@ public struct AppAboutView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .padding(.horizontal, formHorizontalPadding)
-            .padding(.vertical, formVerticalPadding)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
             .background(formBackgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(formBorderColor, lineWidth: formBorderWidth)
+                    .stroke(formBorderColor, lineWidth: 1)
             )
 #endif
         }
