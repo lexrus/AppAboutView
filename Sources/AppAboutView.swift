@@ -65,9 +65,6 @@ public struct AppAboutView: View {
                 VStack(spacing: 16) {
                     ProgressView()
                         .scaleEffect(1.2)
-                    Text(String(localized: "AppAboutView.ProcessingPurchase", bundle: .module))
-                        .foregroundColor(.primary)
-                        .font(.body)
                 }
                 .padding(24)
                 .background(Material.regular, in: RoundedRectangle(cornerRadius: 16))
