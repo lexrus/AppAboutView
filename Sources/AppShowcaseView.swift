@@ -167,9 +167,17 @@ struct AppShowcaseItemView: View {
 #endif
 
 #if canImport(AppKit)
+        #if targetEnvironment(macCatalyst)
+        // Use UIImage for Mac Catalyst
+        if let image = UIImage(named: iconName, in: .module, compatibleWith: nil) {
+            return Image(uiImage: image)
+        }
+        #else
+        // Use NSImage for native macOS
         if let image = Bundle.module.image(forResource: iconName) {
             return Image(nsImage: image)
         }
+        #endif
 #endif
 
         return nil
