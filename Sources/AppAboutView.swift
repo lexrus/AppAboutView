@@ -11,6 +11,7 @@ import UIKit
 
 public struct AppAboutView: View {
     @State internal var showingThankYouAlert = false
+    @State internal var isLoadingPurchase = false
     let appName: String
     let appIcon: Image?
     let appVersion: String
@@ -50,11 +51,28 @@ public struct AppAboutView: View {
     }
 
     public var body: some View {
+        ZStack {
 #if os(macOS)
-        buildMacOSLayout()
+            buildMacOSLayout()
 #else
-        buildNormalLayout()
+            buildNormalLayout()
 #endif
+            
+            if isLoadingPurchase {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 16) {
+                    ProgressView()
+                        .scaleEffect(1.2)
+                    Text(String(localized: "AppAboutView.ProcessingPurchase", bundle: .module))
+                        .foregroundColor(.primary)
+                        .font(.body)
+                }
+                .padding(24)
+                .background(Material.regular, in: RoundedRectangle(cornerRadius: 16))
+            }
+        }
     }
 
 
@@ -140,12 +158,23 @@ public struct AppAboutView: View {
 
     internal func purchaseCoffeeTip(productID: String) {
         Task {
+            await MainActor.run {
+                isLoadingPurchase = true
+            }
+            
             do {
                 guard let product = try await Product.products(for: [productID]).first else {
+                    await MainActor.run {
+                        isLoadingPurchase = false
+                    }
                     return
                 }
 
                 let result = try await product.purchase()
+
+                await MainActor.run {
+                    isLoadingPurchase = false
+                }
 
                 switch result {
                 case .success(let verification):
@@ -165,6 +194,9 @@ public struct AppAboutView: View {
                     break
                 }
             } catch {
+                await MainActor.run {
+                    isLoadingPurchase = false
+                }
                 // Handle purchase error silently
             }
         }
