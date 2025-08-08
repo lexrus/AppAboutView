@@ -37,7 +37,7 @@ Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "path/to/AppAboutView", from: "0.0.2")
+    .package(url: "https://github.com/lexrus/AppAboutView", from: "0.0.2")
 ]
 ```
 
