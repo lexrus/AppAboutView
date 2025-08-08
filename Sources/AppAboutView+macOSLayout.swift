@@ -26,6 +26,7 @@ extension AppAboutView {
                     Text(appName)
                         .font(.largeTitle)
                         .fontWeight(.medium)
+                        .multilineTextAlignment(.center)
 
                     Text(String(format: String(localized: "AppAboutView.Version", bundle: .module), appVersion, buildVersion))
                         .font(.subheadline)
@@ -65,7 +66,7 @@ extension AppAboutView {
                         .foregroundColor(.secondary)
                 }
             }
-            .frame(width: 160)
+            .frame(minWidth: 150)
             .padding(.leading, 30)
             .padding(.vertical, 30)
 

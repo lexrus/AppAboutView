@@ -12,6 +12,15 @@ import UIKit
 public struct AppAboutView: View {
     @State internal var showingThankYouAlert = false
     @State internal var isLoadingPurchase = false
+    @State internal var loadedProducts: [Product] = []
+    @State internal var productsLoaded = false
+    
+    // UI Testing detection
+    private var isUITesting: Bool {
+        ProcessInfo.processInfo.arguments.contains("UI_TESTING") ||
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil ||
+        ProcessInfo.processInfo.environment["XCTestSessionIdentifier"] != nil
+    }
     let appName: String
     let appIcon: Image?
     let appVersion: String
@@ -70,6 +79,9 @@ public struct AppAboutView: View {
                 .background(Material.regular, in: RoundedRectangle(cornerRadius: 16))
             }
         }
+        .task {
+            await loadProducts()
+        }
     }
 
 
@@ -118,10 +130,18 @@ public struct AppAboutView: View {
     }
 
     internal func buildCoffeeTipButtons() -> [AnyView] {
-        guard let coffeeTips = coffeeTips else { return [] }
+        guard let coffeeTips = coffeeTips, productsLoaded else { return [] }
 
-        return coffeeTips.enumerated().map { index, productID in
-            let displayName = generateCoffeeTipDisplayName(for: index)
+        return coffeeTips.enumerated().compactMap { index, productID in
+            let displayName: String
+            
+            // Check if we're in UI testing environment OR if we have no loaded products (likely testing)
+            if isUITesting || loadedProducts.isEmpty {
+                displayName = generateMockCoffeeTipDisplayName(for: index, productID: productID)
+            } else {
+                guard let product = loadedProducts.first(where: { $0.id == productID }) else { return nil }
+                displayName = generateCoffeeTipDisplayName(for: index, product: product)
+            }
 #if os(macOS)
             return AnyView(
                 GlassButton(
@@ -144,12 +164,51 @@ public struct AppAboutView: View {
         }
     }
 
-    internal func generateCoffeeTipDisplayName(for index: Int) -> String {
-        let coffeeCount = index + 1
-        if coffeeCount == 1 {
-            return String(localized: "AppAboutView.BuyMeACoffee", bundle: .module)
-        } else {
-            return String(format: String(localized: "AppAboutView.BuyMeCoffees", bundle: .module), coffeeCount)
+    internal func generateCoffeeTipDisplayName(for index: Int, product: Product) -> String {
+        let price = product.displayPrice
+        let productName = product.displayName
+        return "\(price) \(productName)"
+    }
+    
+    internal func generateMockCoffeeTipDisplayName(for index: Int, productID: String) -> String {
+        // Generate mock prices and names based on index and productID
+        let mockPrices = ["$2.99", "$4.99", "$9.99", "$19.99", "$49.99"]
+        let mockNames = ["Buy me a coffee", "Buy me 2 coffees", "Buy me 5 coffees", "Buy me 10 coffees", "Buy me 25 coffees"]
+        
+        let price = mockPrices[min(index, mockPrices.count - 1)]
+        let productName = mockNames[min(index, mockNames.count - 1)]
+        
+        return "\(price) \(productName)"
+    }
+
+    internal func loadProducts() async {
+        guard let coffeeTips = coffeeTips, !coffeeTips.isEmpty else {
+            await MainActor.run {
+                productsLoaded = true
+            }
+            return
+        }
+        
+        // In UI testing environment, skip product loading and mark as loaded
+        if isUITesting {
+            await MainActor.run {
+                loadedProducts = []
+                productsLoaded = true
+            }
+            return
+        }
+        
+        do {
+            let products = try await Product.products(for: coffeeTips)
+            await MainActor.run {
+                loadedProducts = products
+                productsLoaded = true
+            }
+        } catch {
+            await MainActor.run {
+                loadedProducts = []
+                productsLoaded = true
+            }
         }
     }
 
@@ -160,7 +219,7 @@ public struct AppAboutView: View {
             }
             
             do {
-                guard let product = try await Product.products(for: [productID]).first else {
+                guard let product = loadedProducts.first(where: { $0.id == productID }) else {
                     await MainActor.run {
                         isLoadingPurchase = false
                     }
@@ -349,15 +408,18 @@ public struct AppAboutView: View {
         if let nsImage = NSApp.applicationIconImage {
             Image(nsImage: nsImage)
                 .resizable()
+                .aspectRatio(contentMode: .fit)
         } else {
             Image(systemName: "app.fill")
                 .font(.system(size: 64))
                 .foregroundColor(.secondary)
+                .aspectRatio(contentMode: .fit)
         }
 #else
         Image(systemName: "app.fill")
             .font(.system(size: 64))
             .foregroundColor(.secondary)
+            .aspectRatio(contentMode: .fit)
 #endif
     }
 

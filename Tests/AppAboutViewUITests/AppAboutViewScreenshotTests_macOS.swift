@@ -14,7 +14,7 @@ struct AppAboutViewScreenshotTests_macOS {
     func testAppAboutViewMacOSSpecific() async throws {
         let view = AppAboutView(
             appName: "macOS Native App",
-            appIcon: Image(systemName: "laptopcomputer"),
+            appIcon: Image(systemName: "apple.logo"),
             appVersion: "3.2.1",
             buildVersion: "2024.08.04",
             feedbackEmail: "mac@nativeapp.com",
@@ -24,14 +24,19 @@ struct AppAboutViewScreenshotTests_macOS {
             coffeeTips: ["mac.coffee.single", "mac.coffee.double"]
         )
         
-        await testBothColorSchemes(view: view, baseName: "AppAboutView_macOS", size: CGSize(width: 600, height: 800), waitTime: 1_500_000_000)
+        await testBothColorSchemes(
+            view: view,
+            baseName: "AppAboutView_macOS",
+            size: CGSize(width: 600, height: 800),
+            waitTime: 1_500_000_000
+        )
     }
     
     @Test("AppAboutView - macOS Different Window Sizes")
     func testAppAboutViewMacOSDifferentSizes() async throws {
         let view = AppAboutView(
             appName: "macOS Size Test",
-            appIcon: Image(systemName: "macwindow"),
+            appIcon: Image(systemName: "apple.logo"),
             appVersion: "1.0.0",
             buildVersion: "1",
             feedbackEmail: "test@macostest.com",
