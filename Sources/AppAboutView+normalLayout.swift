@@ -56,7 +56,7 @@ extension AppAboutView {
                 )
 
                 // Coffee Tips Section
-                if let coffeeTips = coffeeTips, !coffeeTips.isEmpty {
+                if let coffeeTips = coffeeTips, !coffeeTips.isEmpty, !loadedProducts.isEmpty, !isLoadingPurchase {
                     buildCoffeeTipsSection()
                 }
 
