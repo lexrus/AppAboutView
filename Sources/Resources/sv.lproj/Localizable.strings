@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Swedish)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Version %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Integritetspolicy";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Feedback";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Erkännanden";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "Betygsätt App";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "Om";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Mina Appar";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Inga appar tillgängliga";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Stöd Utvecklare";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Köp en kaffe till mig";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Köp %d kaffar till mig";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Tack!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Tack för att du stöder utvecklingen! Ditt bidrag uppskattas mycket.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "OK";

@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Thai)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "เวอร์ชัน %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "นโยบายความเป็นส่วนตัว";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "ความคิดเห็น";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "การขอบคุณ";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "ให้คะแนนแอป";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "เกี่ยวกับ";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "แอปของฉัน";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "ไม่มีแอปที่พร้อมใช้งาน";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "สนับสนุนนักพัฒนา";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "ซื้อกาแฟให้ฉัน";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "ซื้อกาแฟให้ฉัน %d แก้ว";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "ขอบคุณ!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "ขอบคุณที่สนับสนุนการพัฒนา! เราขอขอบคุณสำหรับการสนับสนุนของคุณ";
+
+/* OK button for alert */
+"AppAboutView.OK" = "ตกลง";

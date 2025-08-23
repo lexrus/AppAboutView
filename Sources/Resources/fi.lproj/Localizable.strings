@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Finnish)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Versio %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Tietosuojakäytäntö";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Palaute";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Kiitokset";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "Arvostele sovellus";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "Tietoja";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Omat sovellukset";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Ei saatavilla olevia sovelluksia";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Tue kehittäjää";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Osta minulle kahvi";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Osta minulle %d kahvia";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Kiitos!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Kiitos kehityksen tukemisesta! Panoksesi on erittäin arvokasta.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "OK";

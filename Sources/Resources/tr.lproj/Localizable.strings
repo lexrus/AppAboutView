@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Turkish)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Sürüm %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Gizlilik Politikası";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Geri Bildirim";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Teşekkürler";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "Uygulamayı Değerlendir";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "Hakkında";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Uygulamalarım";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Kullanılabilir uygulama yok";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Geliştiriciyi Destekle";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Bana bir kahve ısmarla";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Bana %d kahve ısmarla";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Teşekkürler!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Geliştirmeyi desteklediğiniz için teşekkürler! Katkınız çok değerli.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "Tamam";

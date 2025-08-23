@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Vietnamese)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Phiên bản %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Chính sách Bảo mật";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Phản hồi";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Lời cảm ơn";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "Đánh giá Ứng dụng";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "Giới thiệu";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Ứng dụng của tôi";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Không có ứng dụng nào";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Hỗ trợ Nhà phát triển";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Mua cho tôi một ly cà phê";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Mua cho tôi %d ly cà phê";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Cảm ơn bạn!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Cảm ơn bạn đã hỗ trợ quá trình phát triển! Sự đóng góp của bạn rất được trân trọng.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "OK";
