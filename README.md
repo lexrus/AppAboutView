@@ -191,7 +191,7 @@ The framework includes comprehensive localization support:
 
 ## Requirements
 
-- macOS 15.0+ / iOS 17.0+ / tvOS 17.0+ / visionOS 1.0+
+- macOS 15.0+ / iOS 17.0+
 - Swift 6.0+
 - SwiftUI
 - StoreKit (for coffee tips feature)
