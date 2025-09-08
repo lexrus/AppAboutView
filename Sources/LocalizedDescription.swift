@@ -19,6 +19,9 @@ public struct LocalizedDescription: Codable, Hashable {
     public let ru: String?
     public let zhHans: String?
     public let zhHant: String?
+    public let hi: String?
+    public let pl: String?
+    public let id: String?
 
     private enum CodingKeys: String, CodingKey {
         case en
@@ -39,9 +42,12 @@ public struct LocalizedDescription: Codable, Hashable {
         case ru
         case zhHans = "zh-Hans"
         case zhHant = "zh-Hant"
+        case hi
+        case pl
+        case id
     }
 
-    public init(en: String, de: String? = nil, es: String? = nil, fr: String? = nil, it: String? = nil, ja: String? = nil, ko: String? = nil, nl: String? = nil, pt: String? = nil, no: String? = nil, th: String? = nil, tr: String? = nil, vi: String? = nil, sv: String? = nil, fi: String? = nil, ru: String? = nil, zhHans: String? = nil, zhHant: String? = nil) {
+    public init(en: String, de: String? = nil, es: String? = nil, fr: String? = nil, it: String? = nil, ja: String? = nil, ko: String? = nil, nl: String? = nil, pt: String? = nil, no: String? = nil, th: String? = nil, tr: String? = nil, vi: String? = nil, sv: String? = nil, fi: String? = nil, ru: String? = nil, zhHans: String? = nil, zhHant: String? = nil, hi: String? = nil, pl: String? = nil, id: String? = nil) {
         self.en = en
         self.de = de
         self.es = es
@@ -60,6 +66,9 @@ public struct LocalizedDescription: Codable, Hashable {
         self.ru = ru
         self.zhHans = zhHans
         self.zhHant = zhHant
+        self.hi = hi
+        self.pl = pl
+        self.id = id
     }
 
     public var localizedString: String {
@@ -103,6 +112,12 @@ public struct LocalizedDescription: Codable, Hashable {
             } else {
                 return zhHant ?? en
             }
+        case "hi":
+            return hi ?? en
+        case "pl":
+            return pl ?? en
+        case "id":
+            return id ?? en
         default:
             return en
         }

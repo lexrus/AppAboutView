@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Indonesian)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "Versi %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "Kebijakan Privasi";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "Umpan Balik";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "Penghargaan";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "Beri Rating Aplikasi";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "Tentang";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "Aplikasi Saya";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "Tidak ada aplikasi yang tersedia";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "Dukung Pengembang";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "Beli saya kopi";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "Beli saya %d kopi";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "Terima Kasih!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "Terima kasih telah mendukung pengembangan! Kontribusi Anda sangat dihargai.";
+
+/* OK button for alert */
+"AppAboutView.OK" = "OK";

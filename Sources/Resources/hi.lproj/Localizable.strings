@@ -1,0 +1,47 @@
+/*
+   AppAboutView Localizable.strings (Hindi)
+
+   Localized strings for the AppAboutView micro framework
+*/
+
+/* Version format string - Shows app version and build number */
+"AppAboutView.Version" = "संस्करण %@ (%@)";
+
+/* Button to open privacy policy */
+"AppAboutView.PrivacyPolicy" = "गोपनीयता नीति";
+
+/* Button to open feedback email */
+"AppAboutView.GiveFeedback" = "प्रतिक्रिया";
+
+/* Button to show acknowledgments */
+"AppAboutView.Acknowledgments" = "स्वीकृति";
+
+/* Button to open App Store rating page */
+"AppAboutView.RateOnAppStore" = "ऐप रेट करें";
+
+/* Navigation title for the About view */
+"AppAboutView.About" = "के बारे में";
+
+/* Section title for my apps showcase */
+"AppAboutView.MyApps" = "मेरे ऐप्स";
+
+/* Message when no apps are found */
+"AppAboutView.NoAppsFound" = "कोई ऐप उपलब्ध नहीं";
+
+/* Section title for coffee tips */
+"AppAboutView.SupportDeveloper" = "डेवलपर का समर्थन करें";
+
+/* Button to buy one coffee */
+"AppAboutView.BuyMeACoffee" = "मुझे कॉफी खिलाएं";
+
+/* Button to buy multiple coffees - %d is the number of coffees */
+"AppAboutView.BuyMeCoffees" = "मुझे %d कॉफी खिलाएं";
+
+/* Thank you alert title */
+"AppAboutView.ThankYou" = "धन्यवाद!";
+
+/* Thank you alert message */
+"AppAboutView.ThankYouMessage" = "विकास का समर्थन करने के लिए धन्यवाद! आपका योगदान की बहुत सराहना की जाती है।";
+
+/* OK button for alert */
+"AppAboutView.OK" = "ठीक है";
