@@ -71,3 +71,9 @@ AppAboutView is a SwiftUI package that provides a reusable "About" view componen
 - `Sources/Resources/Assets.xcassets/`: App icons for showcase apps
 - Language-specific `.lproj/` folders: Localized strings
 - Please ignore files in .windsurf folder since they're made for Windsurf
+
+## MCP Servers
+
+Always use context7 when I need code generation, setup or configuration steps, or library/API documentation. This means you should automatically use the Context7 MCP tools to resolve library id and get library docs without me having to explicitly ask.
+
+Skip the `resolve-library-id` for Swift, and all Apple frameworks since we know the _library ID_ is `/websites/developer_apple`.
