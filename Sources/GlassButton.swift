@@ -54,6 +54,8 @@ public struct GlassButton: View {
                             Image(systemName: systemImage)
                         }
                     }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(GlassButtonStyle())
