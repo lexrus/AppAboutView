@@ -55,7 +55,7 @@ public struct GlassButton: View {
                         }
                     }
                     .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
+                    .padding(.vertical, 2)
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(GlassButtonStyle())
