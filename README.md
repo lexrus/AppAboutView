@@ -1,6 +1,6 @@
 # AppAboutView
 
-A comprehensive SwiftUI micro-framework for displaying beautiful "About" views in your macOS and iOS apps. Features automatic bundle detection, in-app purchases for coffee tips, app showcase functionality, and full localization support.
+A comprehensive SwiftUI micro-framework for displaying beautiful "About" views in your macOS, iOS, tvOS, and visionOS apps. Features automatic bundle detection, in-app purchases for coffee tips, app showcase functionality, and full localization support.
 
 ![Large Light](screenshots/iOS_screenshots.png)
 

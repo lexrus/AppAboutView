@@ -45,7 +45,9 @@ extension AppAboutView {
                         }
                     }
                 }
+#if !os(tvOS)
                 .scrollContentBackground(.hidden)
+#endif
                 .padding(.horizontal, 16)
                 .padding(.vertical, 16)
                 .background(formBackgroundColor)

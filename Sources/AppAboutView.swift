@@ -116,7 +116,9 @@ public struct AppAboutView: View {
                     }
                 }
             }
+#if !os(tvOS)
             .scrollContentBackground(.hidden)
+#endif
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .background(formBackgroundColor)
@@ -181,6 +183,19 @@ public struct AppAboutView: View {
         return "\(price) \(productName)"
     }
 
+#if os(visionOS)
+    internal func loadProducts() async {
+        await MainActor.run {
+            // StoreKit purchases are unavailable on visionOS today.
+            loadedProducts = []
+            productsLoaded = false
+        }
+    }
+
+    internal func purchaseCoffeeTip(productID: String) {
+        // Purchasing is not supported on visionOS.
+    }
+#else
     internal func loadProducts() async {
         guard let coffeeTips = coffeeTips, !coffeeTips.isEmpty else {
             await MainActor.run {
@@ -257,6 +272,7 @@ public struct AppAboutView: View {
             }
         }
     }
+#endif
 
     internal func buildSettingsButtons() -> [AnyView] {
         var buttons: [AnyView] = []

@@ -63,7 +63,12 @@ public struct AppShowcaseView: View {
     }
 
     private func openAppStore(for app: MyAppInfo) {
-#if os(iOS)
+#if os(macOS)
+        let urlString = "https://apps.apple.com/app/id\(app.appStoreID)"
+        if let url = URL(string: urlString) {
+            NSWorkspace.shared.open(url)
+        }
+#elseif os(iOS)
         let storeViewController = SKStoreProductViewController()
         storeViewController.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: app.appStoreID]) { _, _ in }
 
@@ -71,10 +76,10 @@ public struct AppShowcaseView: View {
            let rootViewController = windowScene.windows.first?.rootViewController {
             rootViewController.present(storeViewController, animated: true)
         }
-#else
+#elseif os(tvOS) || os(visionOS)
         let urlString = "https://apps.apple.com/app/id\(app.appStoreID)"
         if let url = URL(string: urlString) {
-            NSWorkspace.shared.open(url)
+            UIApplication.shared.open(url)
         }
 #endif
     }
@@ -151,9 +156,15 @@ struct AppShowcaseItemView: View {
             .padding(.vertical, 8)
         }
         .buttonStyle(.plain)
+#if os(macOS)
         .onHover { hovering in
             isHovered = hovering
         }
+#elseif os(iOS)
+        .onHoverIfAvailable { hovering in
+            isHovered = hovering
+        }
+#endif
     }
 
     private func loadAppIcon() -> Image? {
@@ -219,3 +230,16 @@ struct EmptyStateView: View {
     }
     .padding()
 }
+
+#if os(iOS)
+private extension View {
+    @ViewBuilder
+    func onHoverIfAvailable(_ action: @escaping (Bool) -> Void) -> some View {
+        if #available(iOS 13.4, *) {
+            onHover(perform: action)
+        } else {
+            self
+        }
+    }
+}
+#endif
