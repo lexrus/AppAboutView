@@ -46,9 +46,9 @@ public struct GlassButton: View {
             // System glass styles are unavailable on visionOS today, so always fall back to the custom variant.
             legacyGlassButton
 #else
-            // Glass button styles do not land on tvOS until 26.0, so we keep the
+            // Glass button styles do not land on OS(s) until 26.0, so we keep the
             // custom implementation there until the system style becomes available.
-            if #available(iOS 18.0, macOS 15.0, tvOS 26.0, watchOS 11.0, *) {
+            if #available(iOS 26.0, macOS 26.0, tvOS 26.0, *) {
                 // Prefer system button style on newer OS versions
                 Button(action: action) {
                     HStack {
