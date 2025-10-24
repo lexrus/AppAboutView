@@ -63,18 +63,19 @@ extension AppAboutView {
                 }
 
                 // App Showcase Section
+                if appsShowcaseURL != nil {
+                    Text(String(localized: "AppAboutView.MyApps", bundle: .module))
+                        .font(.headline)
+                        .fontWeight(.medium)
 
-                Text(String(localized: "AppAboutView.MyApps", bundle: .module))
-                    .font(.headline)
-                    .fontWeight(.medium)
-
-                AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
-                    .background(formBackgroundColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(formBorderColor, lineWidth: 1)
-                    )
+                    AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
+                        .background(formBackgroundColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(formBorderColor, lineWidth: 1)
+                        )
+                }
 
                 // Copyright
                 if let copyrightText = copyrightText {
