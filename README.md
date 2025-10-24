@@ -55,7 +55,6 @@ Or add it through Xcode:
 import AppAboutView
 
 // Automatic bundle info detection with all features
-// The framework automatically extracts app name, version, and icon from your app's bundle
 AppAboutView.fromMainBundle(
     feedbackEmail: "feedback@yourapp.com",
     appStoreID: "123456789",
