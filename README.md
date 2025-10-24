@@ -16,7 +16,7 @@ A comprehensive SwiftUI micro-framework for displaying beautiful "About" views i
 ### Core Functionality
 
 - **Multi-platform support** - Works on macOS 15+, iOS 17+, tvOS 17+, and visionOS 1+ with platform-specific UI adaptations
-- **Automatic bundle info extraction** - Pulls app name, version, and build info from your app's bundle
+- **Automatic bundle info extraction** - Pulls app name, version, build info, and app icon from your app's bundle
 - **Customizable actions** - Support for feedback email, App Store rating, privacy policy, and acknowledgments
 - **Platform-specific styling** - Native look and feel on each platform with proper color schemes and layout
 
@@ -64,6 +64,8 @@ AppAboutView.fromMainBundle(
     coffeeTips: ["coffee.single", "coffee.double", "coffee.triple"]
 )
 ```
+
+> **Note**: The `fromMainBundle()` method automatically extracts your app's icon from the main bundle. On iOS/tvOS/visionOS, it reads the icon from `CFBundleIcons` in your Info.plist. On macOS, it uses `NSApp.applicationIconImage`. You can override this by providing a custom `appIcon` parameter.
 
 ### Custom Configuration
 

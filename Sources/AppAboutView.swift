@@ -432,12 +432,35 @@ public struct AppAboutView: View {
                 .aspectRatio(contentMode: .fit)
         }
 #else
-        Image(systemName: "app.fill")
-            .font(.system(size: 64))
-            .foregroundColor(.secondary)
-            .aspectRatio(contentMode: .fit)
+        if let uiImage = Self.loadAppIconFromBundle() {
+            Image(uiImage: uiImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        } else {
+            Image(systemName: "app.fill")
+                .font(.system(size: 64))
+                .foregroundColor(.secondary)
+                .aspectRatio(contentMode: .fit)
+        }
 #endif
     }
+    
+#if !os(macOS)
+    /// Attempts to load the app icon from the main bundle
+    /// Returns the app icon as a UIImage, or nil if it cannot be loaded
+    internal static func loadAppIconFromBundle() -> UIImage? {
+        // Try to get icon from Info.plist
+        guard let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
+              let primaryIconsDictionary = iconsDictionary["CFBundlePrimaryIcon"] as? [String: Any],
+              let iconFiles = primaryIconsDictionary["CFBundleIconFiles"] as? [String],
+              let lastIcon = iconFiles.last else {
+            return nil
+        }
+        
+        // Try to load the icon image
+        return UIImage(named: lastIcon)
+    }
+#endif
 
     // MARK: - Private Methods
 
@@ -497,10 +520,29 @@ public extension AppAboutView {
         let defaultAppName = bundle.infoDictionary?["CFBundleName"] as? String ?? "App"
         let appVersion = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
         let buildVersion = bundle.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        
+        // Load app icon from bundle if not provided
+        let iconImage: Image?
+        if let providedIcon = appIcon {
+            iconImage = providedIcon
+        } else {
+#if !os(macOS)
+            // On iOS/tvOS/visionOS, try to load the icon from the bundle
+            if let uiImage = loadAppIconFromBundle() {
+                iconImage = Image(uiImage: uiImage)
+            } else {
+                iconImage = nil
+            }
+#else
+            // On macOS, don't try to load the icon here due to NSApp initialization timing
+            // The defaultAppIcon property will handle it at runtime when NSApp is available
+            iconImage = nil
+#endif
+        }
 
         return AppAboutView(
             appName: appName ?? defaultAppName,
-            appIcon: appIcon,
+            appIcon: iconImage,
             appVersion: appVersion,
             buildVersion: buildVersion,
             feedbackEmail: feedbackEmail,
