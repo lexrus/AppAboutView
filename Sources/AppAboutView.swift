@@ -526,18 +526,17 @@ public extension AppAboutView {
         if let providedIcon = appIcon {
             iconImage = providedIcon
         } else {
-#if os(macOS)
-            if let nsImage = NSApp.applicationIconImage {
-                iconImage = Image(nsImage: nsImage)
-            } else {
-                iconImage = nil
-            }
-#else
+#if !os(macOS)
+            // On iOS/tvOS/visionOS, try to load the icon from the bundle
             if let uiImage = loadAppIconFromBundle() {
                 iconImage = Image(uiImage: uiImage)
             } else {
                 iconImage = nil
             }
+#else
+            // On macOS, don't try to load the icon here due to NSApp initialization timing
+            // The defaultAppIcon property will handle it at runtime when NSApp is available
+            iconImage = nil
 #endif
         }
 
