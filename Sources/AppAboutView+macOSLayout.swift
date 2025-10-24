@@ -98,7 +98,9 @@ extension AppAboutView {
                     }
 
                     // App Showcase Section
-                    AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
+                    if appsShowcaseURL != nil {
+                        AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
+                    }
                 }
                 .padding(.horizontal, 30)
                 .padding(.vertical, 30)

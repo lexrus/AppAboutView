@@ -347,3 +347,42 @@ import SwiftUI
     #expect(view.privacyPolicy == complexPrivacyURL)
     #expect(view.appsShowcaseURL == complexShowcaseURL)
 }
+
+@Test @MainActor func testAppAboutViewWithNilShowcaseURL() {
+    let view = AppAboutView(
+        appName: "No Showcase App",
+        appStoreID: "1111111114",
+        appsShowcaseURL: nil
+    )
+    
+    // When appsShowcaseURL is nil, the showcase section should not be displayed
+    #expect(view.appsShowcaseURL == nil)
+}
+
+@Test @MainActor func testAppAboutViewWithEmptyStringShowcaseURL() {
+    // URL(string: "") returns nil
+    let emptyURL = URL(string: "")
+    
+    let view = AppAboutView(
+        appName: "Empty Showcase URL App",
+        appStoreID: "1111111115",
+        appsShowcaseURL: emptyURL
+    )
+    
+    // Empty string URL should be nil, so showcase section should not be displayed
+    #expect(view.appsShowcaseURL == nil)
+}
+
+@Test @MainActor func testAppAboutViewWithValidShowcaseURL() {
+    let showcaseURL = URL(string: "https://example.com/apps.json")!
+    
+    let view = AppAboutView(
+        appName: "With Showcase App",
+        appStoreID: "1111111116",
+        appsShowcaseURL: showcaseURL
+    )
+    
+    // When appsShowcaseURL is provided, the showcase section should be displayed
+    #expect(view.appsShowcaseURL == showcaseURL)
+    #expect(view.appsShowcaseURL != nil)
+}
