@@ -113,11 +113,10 @@ AppShowcaseView(
 **Note**: To disable the "My Apps" section entirely, simply omit the `appsShowcaseURL` parameter or pass `nil`:
 
 ```swift
-// Without app showcase section
+// Without app showcase section - just omit the appsShowcaseURL parameter
 AppAboutView.fromMainBundle(
     feedbackEmail: "feedback@yourapp.com",
     appStoreID: "123456789"
-    // appsShowcaseURL is omitted - no "My Apps" section will be shown
 )
 ```
 
