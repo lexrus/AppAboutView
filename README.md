@@ -23,7 +23,7 @@ A comprehensive SwiftUI micro-framework for displaying beautiful "About" views i
 ### Advanced Features
 
 - **Coffee Tip Integration** - Built-in StoreKit support for in-app purchase coffee tips with customizable product IDs
-- **App Showcase** - Display your other apps with local icons, platform tags, and smart filtering
+- **App Showcase** - Display your other apps with remote or bundled icons, platform tags, and smart filtering
 - **Remote Data Loading** - Fetch app showcase data from remote URLs with intelligent caching (1-hour refresh)
 - **Comprehensive Localization** - Full support for 10 languages (English, German, Spanish, French, Italian, Japanese, Korean, Russian, Simplified Chinese, Traditional Chinese)
 - **Smart Caching** - UserDefaults-based caching with automatic refresh logic and debug mode override
@@ -139,12 +139,15 @@ Create a JSON file with your app information:
         "zh-Hans": "提高生产力的惊人应用",
         "ja": "生産性を向上させる素晴らしいアプリ"
       },
+      "iconURL": "https://cdn.yourapp.com/icons/myapp.png",
       "appStoreID": "987654321",
       "platforms": ["macOS", "iOS", "iPadOS"]
     }
   ]
 }
 ```
+
+The optional `iconURL` field lets you serve high-resolution icons from a CDN or API. When omitted or when the download fails, AppAboutView automatically falls back to a bundled asset named `<id>-icon`.
 
 ### Coffee Tips Setup
 

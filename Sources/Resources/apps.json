@@ -25,8 +25,11 @@
         "zh-Hans": "轻松使用自定义热键和智能自动化功能，直接从菜单栏管理蓝牙设备。",
         "zh-Hant": "輕鬆使用自訂熱鍵和智慧自動化功能，直接從選單列管理藍牙裝置。"
       },
+      "iconURL": "https://raw.githubusercontent.com/lexrus/AppAboutView/main/Sources/Resources/Assets.xcassets/sharptooth-icon.imageset/icon_128x128@2x.png",
       "appStoreID": "6748440814",
-      "platforms": ["macOS"]
+      "platforms": [
+        "macOS"
+      ]
     },
     {
       "id": "liveextractor",
@@ -51,8 +54,15 @@
         "zh-Hans": "在所有 Apple 设备上从 Live Photos 中提取单独的照片和视频。",
         "zh-Hant": "在所有 Apple 裝置上從 Live Photos 中提取單獨的照片和影片。"
       },
+      "iconURL": "https://raw.githubusercontent.com/lexrus/AppAboutView/main/Sources/Resources/Assets.xcassets/liveextractor-icon.imageset/MacAppIcon256.png",
       "appStoreID": "6746672642",
-      "platforms": ["iOS", "iPadOS", "macOS", "visionOS", "tvOS"]
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "visionOS",
+        "tvOS"
+      ]
     },
     {
       "id": "swiftymenu",
@@ -77,8 +87,11 @@
         "zh-Hans": "一个 Finder 扩展，提供可自定义菜单，快速用您喜爱的应用程序打开选定的文件夹或文件。",
         "zh-Hant": "一個 Finder 擴充功能，提供可自訂選單，快速用您喜愛的應用程式開啟選定的檔案夾或檔案。"
       },
+      "iconURL": "https://raw.githubusercontent.com/lexrus/AppAboutView/main/Sources/Resources/Assets.xcassets/swiftymenu-icon.imageset/mac256.png",
       "appStoreID": "1567748223",
-      "platforms": ["macOS"]
+      "platforms": [
+        "macOS"
+      ]
     },
     {
       "id": "regexplus",
@@ -103,8 +116,13 @@
         "zh-Hans": "一个用于测试正则表达式的多平台应用程序，支持实时匹配。",
         "zh-Hant": "一個用於測試正規表示式的多平台應用程式，支援即時匹配。"
       },
+      "iconURL": "https://raw.githubusercontent.com/lexrus/AppAboutView/main/Sources/Resources/Assets.xcassets/regexplus-icon.imageset/mac256.png",
       "appStoreID": "1511763524",
-      "platforms": ["iOS", "iPadOS", "macOS"]
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ]
     }
   ]
 }

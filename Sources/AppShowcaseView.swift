@@ -96,28 +96,7 @@ struct AppShowcaseItemView: View {
             HStack(spacing: 12) {
                 // App Icon
                 VStack {
-                    if let image = loadAppIcon() {
-                        image
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .shadow(
-                                color: isHovered ? Color.blue.opacity(0.3) : .black.opacity(0.15),
-                                radius: isHovered ? 10 : 3,
-                                x: 0,
-                                y: isHovered ? 5 : 1
-                            )
-                            .animation(.easeInOut(duration: 0.15), value: isHovered)
-                    } else {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.secondary.opacity(0.3))
-                            .frame(width: 40, height: 40)
-                            .overlay {
-                                Image(systemName: "app.fill")
-                                    .foregroundColor(.secondary)
-                            }
-                            .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 1)
-                    }
+                    appIconView()
                     Spacer()
                 }
 
@@ -167,7 +146,69 @@ struct AppShowcaseItemView: View {
 #endif
     }
 
-    private func loadAppIcon() -> Image? {
+    @ViewBuilder
+    private func appIconView() -> some View {
+        let size: CGFloat = 40
+        let cornerRadius: CGFloat = 8
+        let shadowColor = isHovered ? Color.blue.opacity(0.3) : Color.black.opacity(0.15)
+
+        ZStack {
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .fill(Color.secondary.opacity(0.3))
+
+            iconContent()
+        }
+        .frame(width: size, height: size)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .shadow(
+            color: shadowColor,
+            radius: isHovered ? 10 : 3,
+            x: 0,
+            y: isHovered ? 5 : 1
+        )
+        .animation(.easeInOut(duration: 0.15), value: isHovered)
+    }
+
+    @ViewBuilder
+    private func iconContent() -> some View {
+        if let iconURL = app.iconURL, let url = URL(string: iconURL) {
+            AsyncImage(url: url, transaction: Transaction(animation: .easeInOut(duration: 0.15))) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                case .empty:
+                    placeholderSymbol()
+                case .failure:
+                    localIconOrPlaceholder()
+                @unknown default:
+                    localIconOrPlaceholder()
+                }
+            }
+        } else {
+            localIconOrPlaceholder()
+        }
+    }
+
+    @ViewBuilder
+    private func localIconOrPlaceholder() -> some View {
+        if let image = loadLocalAppIcon() {
+            image
+                .resizable()
+                .scaledToFill()
+        } else {
+            placeholderSymbol()
+        }
+    }
+
+    @ViewBuilder
+    private func placeholderSymbol() -> some View {
+        Image(systemName: "app.fill")
+            .foregroundColor(.secondary)
+    }
+
+    private func loadLocalAppIcon() -> Image? {
         let iconName = "\(app.id)-icon"
 
         // Try to load from local bundle first
