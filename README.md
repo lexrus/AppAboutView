@@ -167,6 +167,7 @@ The framework automatically handles:
 
 - Product loading and purchasing via StoreKit
 - Thank you alerts after successful purchases
+- Smooth fade-in animation when coffee tips are loaded
 - Graceful error handling
 - Localized coffee tip button names ("Buy me a coffee", "Buy me 3 coffees", etc.)
 

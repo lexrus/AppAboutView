@@ -60,6 +60,8 @@ extension AppAboutView {
                 // Coffee Tips Section
                 if let coffeeTips = coffeeTips, !coffeeTips.isEmpty, !loadedProducts.isEmpty, !isLoadingPurchase {
                     buildCoffeeTipsSection()
+                        .transition(.opacity)
+                        .animation(.easeIn(duration: 0.3), value: productsLoaded)
                 }
 
                 // App Showcase Section
