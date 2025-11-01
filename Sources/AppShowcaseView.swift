@@ -264,8 +264,11 @@ struct EmptyStateView: View {
 
 #Preview {
     ZStack {
-        AppShowcaseView(currentAppStoreID: "6748440814") // Test filtering with Sharptooth's ID
-            .frame(width: 400, height: 400)
+        AppShowcaseView(
+            remoteURL: URL(string: "https://lex.sh/apps/apps.json"),
+//            currentAppStoreID: "6748440814"
+        ) // Test filtering with Sharptooth's ID
+            .frame(width: 400, height: 500)
     }
     .padding()
 }
