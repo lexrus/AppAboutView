@@ -152,21 +152,16 @@ struct AppShowcaseItemView: View {
         let cornerRadius: CGFloat = 8
         let shadowColor = isHovered ? Color.blue.opacity(0.3) : Color.black.opacity(0.15)
 
-        ZStack {
-            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                .fill(Color.secondary.opacity(0.3))
-
-            iconContent()
-        }
-        .frame(width: size, height: size)
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-        .shadow(
-            color: shadowColor,
-            radius: isHovered ? 10 : 3,
-            x: 0,
-            y: isHovered ? 5 : 1
-        )
-        .animation(.easeInOut(duration: 0.15), value: isHovered)
+        iconContent()
+            .frame(width: size, height: size)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .shadow(
+                color: shadowColor,
+                radius: isHovered ? 10 : 3,
+                x: 0,
+                y: isHovered ? 5 : 1
+            )
+            .animation(.easeInOut(duration: 0.15), value: isHovered)
     }
 
     @ViewBuilder
@@ -177,6 +172,7 @@ struct AppShowcaseItemView: View {
                 case .success(let image):
                     image
                         .resizable()
+                        .interpolation(.high)
                         .scaledToFill()
                 case .empty:
                     placeholderSymbol()
@@ -205,7 +201,9 @@ struct AppShowcaseItemView: View {
     @ViewBuilder
     private func placeholderSymbol() -> some View {
         Image(systemName: "app.fill")
-            .foregroundColor(.secondary)
+            .resizable()
+            .frame(width: 36, height: 36)
+            .foregroundColor(.secondary.opacity(0.1))
     }
 
     private func loadLocalAppIcon() -> Image? {
@@ -267,7 +265,7 @@ struct EmptyStateView: View {
 #Preview {
     ZStack {
         AppShowcaseView(currentAppStoreID: "6748440814") // Test filtering with Sharptooth's ID
-            .frame(width: 400, height: 600)
+            .frame(width: 400, height: 400)
     }
     .padding()
 }

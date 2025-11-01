@@ -564,6 +564,8 @@ public extension AppAboutView {
         privacyPolicy: URL(string: "https://google.com/privacypolicy/"),
         copyrightText: "©2025 Example Company",
         onAcknowledgments: {},
+        appsShowcaseURL: URL(string: "https://lex.sh/apps/apps.json"),
         coffeeTips: ["coffee.single"]
     )
+    .frame(height: 500)
 }
