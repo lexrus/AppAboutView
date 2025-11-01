@@ -72,9 +72,34 @@ public struct LocalizedDescription: Codable, Hashable {
     }
 
     public var localizedString: String {
-        let currentLanguage = Locale.current.language.languageCode?.identifier ?? "en"
-
-        switch currentLanguage {
+        // Get the full language identifier including script if present
+        let locale = Locale.current
+        let languageCode = locale.language.languageCode?.identifier ?? "en"
+        let script = locale.language.script?.identifier
+        
+        // Check for script-specific Chinese first (zh-Hans, zh-Hant)
+        if languageCode == "zh" {
+            // Check script identifier first (most reliable)
+            if script == "Hans" {
+                return zhHans ?? en
+            } else if script == "Hant" {
+                return zhHant ?? en
+            }
+            
+            // Fallback to region-based detection
+            let region = locale.language.region?.identifier
+            if region == "CN" || region == "SG" || region == "MY" {
+                return zhHans ?? en
+            } else if region == "HK" || region == "TW" || region == "MO" {
+                return zhHant ?? en
+            }
+            
+            // Default to Simplified Chinese if no clear indicator
+            // (This handles cases where user explicitly selected Simplified Chinese without region)
+            return zhHans ?? en
+        }
+        
+        switch languageCode {
         case "de":
             return de ?? en
         case "es":
@@ -105,13 +130,6 @@ public struct LocalizedDescription: Codable, Hashable {
             return fi ?? en
         case "ru":
             return ru ?? en
-        case "zh":
-            let region = Locale.current.language.region?.identifier
-            if region == "CN" || region == "SG" {
-                return zhHans ?? en
-            } else {
-                return zhHant ?? en
-            }
         case "hi":
             return hi ?? en
         case "pl":
