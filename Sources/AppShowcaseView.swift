@@ -166,22 +166,19 @@ struct AppShowcaseItemView: View {
 
     @ViewBuilder
     private func iconContent() -> some View {
-        if let iconURL = app.iconURL, let url = URL(string: iconURL) {
-            AsyncImage(url: url, transaction: Transaction(animation: .easeInOut(duration: 0.15))) { phase in
-                switch phase {
-                case .success(let image):
+        if let iconURL = app.iconURL {
+            CachedAsyncImage(
+                urlString: iconURL,
+                content: { image in
                     image
                         .resizable()
                         .interpolation(.high)
                         .scaledToFill()
-                case .empty:
+                },
+                placeholder: {
                     placeholderSymbol()
-                case .failure:
-                    localIconOrPlaceholder()
-                @unknown default:
-                    localIconOrPlaceholder()
                 }
-            }
+            )
         } else {
             localIconOrPlaceholder()
         }
