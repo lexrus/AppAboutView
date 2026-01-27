@@ -30,6 +30,7 @@ public struct AppAboutView: View {
     let privacyPolicy: URL?
     let copyrightText: String?
     let onAcknowledgments: (() -> Void)?
+    let additionalLinks: [AdditionalLink]
     let appsShowcaseURL: URL?
     let coffeeTips: [String]?
 
@@ -43,6 +44,7 @@ public struct AppAboutView: View {
         privacyPolicy: URL? = nil,
         copyrightText: String? = nil,
         onAcknowledgments: (() -> Void)? = nil,
+        additionalLinks: [AdditionalLink] = [],
         appsShowcaseURL: URL? = nil,
         coffeeTips: [String]? = nil
     ) {
@@ -55,6 +57,7 @@ public struct AppAboutView: View {
         self.privacyPolicy = privacyPolicy
         self.copyrightText = copyrightText
         self.onAcknowledgments = onAcknowledgments
+        self.additionalLinks = additionalLinks
         self.appsShowcaseURL = appsShowcaseURL
         self.coffeeTips = coffeeTips
     }
@@ -332,6 +335,19 @@ public struct AppAboutView: View {
             ))
         }
 
+        if !additionalLinks.isEmpty {
+            additionalLinks.forEach { link in
+                buttons.append(AnyView(
+                    settingsButton(
+                        link.title,
+                        icon: Image(systemName: "link")
+                    ) {
+                        openAdditionalLinkURL(link.url)
+                    }
+                ))
+            }
+        }
+
         return buttons
     }
 
@@ -499,6 +515,41 @@ public struct AppAboutView: View {
         UIApplication.shared.open(privacyPolicy)
 #endif
     }
+
+    internal func openAdditionalLinkURL(_ url: URL) {
+#if os(macOS)
+        NSWorkspace.shared.open(url)
+#else
+        UIApplication.shared.open(url)
+#endif
+    }
+}
+
+public extension AppAboutView {
+    enum AdditionalLink: Hashable, Identifiable {
+        case custom(title: String, url: URL)
+
+        public var title: String {
+            switch self {
+            case .custom(let title, _):
+                return title
+            }
+        }
+
+        public var url: URL {
+            switch self {
+            case .custom(_, let url):
+                return url
+            }
+        }
+
+        public var id: String {
+            switch self {
+            case .custom(let title, let url):
+                return "\(title)|\(url.absoluteString)"
+            }
+        }
+    }
 }
 
 // MARK: - Convenience Initializers
@@ -513,6 +564,7 @@ public extension AppAboutView {
         privacyPolicy: URL? = nil,
         copyrightText: String? = nil,
         onAcknowledgments: (() -> Void)? = nil,
+        additionalLinks: [AdditionalLink] = [],
         appsShowcaseURL: URL? = nil,
         coffeeTips: [String]? = nil
     ) -> AppAboutView {
@@ -550,6 +602,7 @@ public extension AppAboutView {
             privacyPolicy: privacyPolicy,
             copyrightText: copyrightText,
             onAcknowledgments: onAcknowledgments,
+            additionalLinks: additionalLinks,
             appsShowcaseURL: appsShowcaseURL,
             coffeeTips: coffeeTips
         )
@@ -564,6 +617,10 @@ public extension AppAboutView {
         privacyPolicy: URL(string: "https://google.com/privacypolicy/"),
         copyrightText: "©2025 Example Company",
         onAcknowledgments: {},
+        additionalLinks: [
+            .custom(title: "Terms of Service", url: URL(string: "https://example.com/terms")!),
+            .custom(title: "Support", url: URL(string: "https://example.com/support")!),
+        ],
         appsShowcaseURL: URL(string: "https://lex.sh/apps/apps.json"),
         coffeeTips: ["coffee.single"]
     )

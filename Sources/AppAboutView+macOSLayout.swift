@@ -53,6 +53,18 @@ extension AppAboutView {
                             .foregroundColor(.secondary)
                             .underline()
                         }
+
+                        if !additionalLinks.isEmpty {
+                            ForEach(additionalLinks) { link in
+                                Button(link.title) {
+                                    openAdditionalLinkURL(link.url)
+                                }
+                                .buttonStyle(.plain)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .underline()
+                            }
+                        }
                     }
                     .padding(.top, 4)
                 }
