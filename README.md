@@ -25,7 +25,7 @@ A comprehensive SwiftUI micro-framework for displaying beautiful "About" views i
 - **Coffee Tip Integration** - Built-in StoreKit support for in-app purchase coffee tips with customizable product IDs
 - **App Showcase** - Display your other apps with remote or bundled icons, platform tags, and smart filtering
 - **Remote Data Loading** - Fetch app showcase data from remote URLs with intelligent caching (1-hour refresh)
-- **Comprehensive Localization** - Full support for 10 languages (English, German, Spanish, French, Italian, Japanese, Korean, Russian, Simplified Chinese, Traditional Chinese)
+- **Comprehensive Localization** - Full support for 22 languages (English, German, Spanish, French, Italian, Japanese, Korean, Russian, Simplified Chinese, Traditional Chinese, Finnish, Hindi, Indonesian, Dutch, Norwegian, Polish, Portuguese, Swedish, Thai, Turkish, Ukrainian, Vietnamese)
 - **Smart Caching** - UserDefaults-based caching with automatic refresh logic and debug mode override
 - **Current App Filtering** - Automatically excludes the current app from the showcase list
 
@@ -175,7 +175,7 @@ The framework automatically handles:
 
 The framework includes comprehensive localization support:
 
-- **Supported Languages**: English (base), German, Spanish, French, Italian, Japanese, Korean, Russian, Simplified Chinese, Traditional Chinese
+- **Supported Languages**: English (base), German, Spanish, French, Italian, Japanese, Korean, Russian, Simplified Chinese, Traditional Chinese, Finnish, Hindi, Indonesian, Dutch, Norwegian, Polish, Portuguese, Swedish, Thai, Turkish, Ukrainian, Vietnamese
 - **Automatic Detection**: Uses device language settings with fallback to English
 - **Custom App Data**: Support for localized app descriptions in showcase data
 - **Bundle Integration**: All strings use `.module` bundle for proper SPM integration

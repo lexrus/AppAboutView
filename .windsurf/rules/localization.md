@@ -15,6 +15,18 @@ trigger: always_on
 - Russian (ru)
 - Simplified Chinese (zh-Hans)
 - Traditional Chinese (zh-Hant)
+- Finnish (fi)
+- Hindi (hi)
+- Indonesian (id)
+- Dutch (nl)
+- Norwegian (no)
+- Polish (pl)
+- Portuguese (pt)
+- Swedish (sv)
+- Thai (th)
+- Turkish (tr)
+- Ukrainian (uk)
+- Vietnamese (vi)
 
 ## Localization Structure
 - Language-specific `.lproj/` folders in `Sources/Resources/`
