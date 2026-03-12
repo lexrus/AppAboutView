@@ -10,6 +10,8 @@ import SwiftUI
         appVersion: "1.0.0",
         buildVersion: "1",
         feedbackEmail: "test@example.com",
+        feedbackEmailSubject: "Support Request",
+        feedbackEmailBody: "Please help",
         appStoreID: "123456789",
         copyrightText: "©2025 Test Company"
     )
@@ -18,6 +20,8 @@ import SwiftUI
     #expect(view.appVersion == "1.0.0")
     #expect(view.buildVersion == "1")
     #expect(view.feedbackEmail == "test@example.com")
+    #expect(view.feedbackEmailSubject == "Support Request")
+    #expect(view.feedbackEmailBody == "Please help")
     #expect(view.appStoreID == "123456789")
     #expect(view.copyrightText == "©2025 Test Company")
 }
@@ -26,11 +30,15 @@ import SwiftUI
     let view = AppAboutView.fromMainBundle(
         appName: "Test App",
         feedbackEmail: "test@example.com",
+        feedbackEmailSubject: "Bug Report",
+        feedbackEmailBody: "Steps to reproduce:",
         appStoreID: "123456789"
     )
 
     #expect(view.appName == "Test App")
     #expect(view.feedbackEmail == "test@example.com")
+    #expect(view.feedbackEmailSubject == "Bug Report")
+    #expect(view.feedbackEmailBody == "Steps to reproduce:")
 }
 
 @Test @MainActor func testAppAboutViewWithOptionalParameters() {
@@ -46,6 +54,8 @@ import SwiftUI
     #expect(view.appVersion == "2.1.0")
     #expect(view.buildVersion == "42")
     #expect(view.feedbackEmail == "feedback@minimal.com")
+    #expect(view.feedbackEmailSubject == nil)
+    #expect(view.feedbackEmailBody == nil)
     #expect(view.appStoreID == "987654321")
     #expect(view.copyrightText == nil)
 }
@@ -63,6 +73,8 @@ import SwiftUI
     #expect(view.appVersion == "")
     #expect(view.buildVersion == "")
     #expect(view.feedbackEmail == "")
+    #expect(view.feedbackEmailSubject == nil)
+    #expect(view.feedbackEmailBody == nil)
     #expect(view.appStoreID == "")
 }
 
@@ -110,6 +122,8 @@ import SwiftUI
     #expect(view.appVersion == "2.1.0")
     #expect(view.buildVersion == "2024.12.01")
     #expect(view.feedbackEmail == "support@fullapp.com")
+    #expect(view.feedbackEmailSubject == nil)
+    #expect(view.feedbackEmailBody == nil)
     #expect(view.appStoreID == "1234567890")
     #expect(view.privacyPolicy == privacyURL)
     #expect(view.copyrightText == "©2025 Full App Inc. All rights reserved.")
@@ -129,6 +143,8 @@ import SwiftUI
     #expect(view.appVersion == "1.0.0") // Default value
     #expect(view.buildVersion == "1") // Default value
     #expect(view.feedbackEmail == nil)
+    #expect(view.feedbackEmailSubject == nil)
+    #expect(view.feedbackEmailBody == nil)
     #expect(view.appStoreID == "0987654321")
     #expect(view.privacyPolicy == nil)
     #expect(view.copyrightText == nil)
@@ -173,9 +189,59 @@ import SwiftUI
     )
     
     #expect(view.feedbackEmail == "hello@feedbackapp.com")
+    #expect(view.feedbackEmailSubject == nil)
+    #expect(view.feedbackEmailBody == nil)
     #expect(view.privacyPolicy == nil)
     #expect(view.coffeeTips == nil)
     #expect(view.onAcknowledgments == nil)
+}
+
+@Test @MainActor func testFeedbackURLUsesDefaultSubject() throws {
+    let view = AppAboutView(
+        appName: "Mailer App",
+        feedbackEmail: "feedback@example.com",
+        appStoreID: "123456789"
+    )
+
+    let url = try #require(view.feedbackURL())
+    let components = try #require(URLComponents(url: url, resolvingAgainstBaseURL: false))
+    let subject = components.queryItems?.first(where: { $0.name == "subject" })?.value
+    let body = components.queryItems?.first(where: { $0.name == "body" })?.value
+
+    #expect(components.scheme == "mailto")
+    #expect(components.path == "feedback@example.com")
+    #expect(subject == "Mailer App Feedback")
+    #expect(body == nil)
+}
+
+@Test @MainActor func testFeedbackURLIncludesCustomSubjectAndBody() throws {
+    let view = AppAboutView(
+        appName: "Mailer App",
+        feedbackEmail: "feedback@example.com",
+        feedbackEmailSubject: "Bug: Sync failed",
+        feedbackEmailBody: "I tapped refresh and it crashed.\nVersion: 2.0.1",
+        appStoreID: "123456789"
+    )
+
+    let url = try #require(view.feedbackURL())
+    let components = try #require(URLComponents(url: url, resolvingAgainstBaseURL: false))
+    let subject = components.queryItems?.first(where: { $0.name == "subject" })?.value
+    let body = components.queryItems?.first(where: { $0.name == "body" })?.value
+
+    #expect(subject == "Bug: Sync failed")
+    #expect(body == "I tapped refresh and it crashed.\nVersion: 2.0.1")
+}
+
+@Test @MainActor func testFeedbackURLIsNilWhenFeedbackEmailIsMissing() {
+    let view = AppAboutView(
+        appName: "No Email App",
+        feedbackEmail: nil,
+        feedbackEmailSubject: "Ignored",
+        feedbackEmailBody: "Ignored",
+        appStoreID: "123456789"
+    )
+
+    #expect(view.feedbackURL() == nil)
 }
 
 @Test @MainActor func testAppAboutViewWithAcknowledgmentsOnly() {

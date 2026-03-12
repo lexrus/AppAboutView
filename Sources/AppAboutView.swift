@@ -26,6 +26,8 @@ public struct AppAboutView: View {
     let appVersion: String
     let buildVersion: String
     let feedbackEmail: String?
+    let feedbackEmailSubject: String?
+    let feedbackEmailBody: String?
     let appStoreID: String
     let privacyPolicy: URL?
     let copyrightText: String?
@@ -40,6 +42,8 @@ public struct AppAboutView: View {
         appVersion: String = "1.0.0",
         buildVersion: String = "1",
         feedbackEmail: String? = nil,
+        feedbackEmailSubject: String? = nil,
+        feedbackEmailBody: String? = nil,
         appStoreID: String,
         privacyPolicy: URL? = nil,
         copyrightText: String? = nil,
@@ -53,6 +57,8 @@ public struct AppAboutView: View {
         self.appVersion = appVersion
         self.buildVersion = buildVersion
         self.feedbackEmail = feedbackEmail
+        self.feedbackEmailSubject = feedbackEmailSubject
+        self.feedbackEmailBody = feedbackEmailBody
         self.appStoreID = appStoreID
         self.privacyPolicy = privacyPolicy
         self.copyrightText = copyrightText
@@ -481,18 +487,32 @@ public struct AppAboutView: View {
     // MARK: - Private Methods
 
     internal func openFeedbackURL() {
-        guard let feedbackEmail = feedbackEmail else { return }
-
-        let subject = "\(appName)%20Feedback"
-        let urlString = "mailto:\(feedbackEmail)?subject=\(subject)"
-
-        guard let url = URL(string: urlString) else { return }
+        guard let url = feedbackURL() else { return }
 
 #if os(macOS)
         NSWorkspace.shared.open(url)
 #else
         UIApplication.shared.open(url)
 #endif
+    }
+
+    internal func feedbackURL() -> URL? {
+        guard let feedbackEmail = feedbackEmail else { return nil }
+        guard var components = URLComponents(string: "mailto:\(feedbackEmail)") else { return nil }
+
+        var queryItems: [URLQueryItem] = []
+        if let feedbackEmailSubject {
+            queryItems.append(URLQueryItem(name: "subject", value: feedbackEmailSubject))
+        } else {
+            queryItems.append(URLQueryItem(name: "subject", value: "\(appName) Feedback"))
+        }
+
+        if let feedbackEmailBody {
+            queryItems.append(URLQueryItem(name: "body", value: feedbackEmailBody))
+        }
+
+        components.queryItems = queryItems.isEmpty ? nil : queryItems
+        return components.url
     }
 
     internal func openAppStoreURL() {
@@ -560,6 +580,8 @@ public extension AppAboutView {
         appName: String? = nil,
         appIcon: Image? = nil,
         feedbackEmail: String? = nil,
+        feedbackEmailSubject: String? = nil,
+        feedbackEmailBody: String? = nil,
         appStoreID: String,
         privacyPolicy: URL? = nil,
         copyrightText: String? = nil,
@@ -598,6 +620,8 @@ public extension AppAboutView {
             appVersion: appVersion,
             buildVersion: buildVersion,
             feedbackEmail: feedbackEmail,
+            feedbackEmailSubject: feedbackEmailSubject,
+            feedbackEmailBody: feedbackEmailBody,
             appStoreID: appStoreID,
             privacyPolicy: privacyPolicy,
             copyrightText: copyrightText,

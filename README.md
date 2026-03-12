@@ -57,6 +57,8 @@ import AppAboutView
 // Automatic bundle info detection with all features
 AppAboutView.fromMainBundle(
     feedbackEmail: "feedback@yourapp.com",
+    feedbackEmailSubject: "MyApp Feedback",
+    feedbackEmailBody: "App Version: 1.2.3\nDevice: iPhone",
     appStoreID: "123456789",
     privacyPolicy: URL(string: "https://yourapp.com/privacy"),
     copyrightText: "©2025 Your Company. All rights reserved.",
@@ -76,6 +78,8 @@ AppAboutView(
     appVersion: "2.0.0",
     buildVersion: "42",
     feedbackEmail: "support@myapp.com",
+    feedbackEmailSubject: "Support Request",
+    feedbackEmailBody: "Describe your issue here...",
     appStoreID: "987654321",
     privacyPolicy: URL(string: "https://myapp.com/privacy"),
     copyrightText: "©2025 My Company Inc.",
