@@ -1,4 +1,5 @@
 import Foundation
+import CryptoKit
 
 #if canImport(UIKit)
 import UIKit
@@ -33,7 +34,7 @@ public class ImageCache: ObservableObject {
 
     /// Load an image from cache or download it if not cached
     public func loadImage(from urlString: String) async -> PlatformImage? {
-        let cacheKey = cacheKey(for: urlString)
+        let cacheKey = Self.cacheKey(for: urlString)
 
         // Check in-memory cache first
         if let cachedImage = cache.object(forKey: cacheKey as NSString) {
@@ -75,9 +76,9 @@ public class ImageCache: ObservableObject {
 
     // MARK: - Private Methods
 
-    private func cacheKey(for urlString: String) -> String {
-        // Use a simple hash of the URL as the cache key
-        return "\(urlString.hashValue)"
+    static func cacheKey(for urlString: String) -> String {
+        let digest = SHA256.hash(data: Data(urlString.utf8))
+        return digest.map { String(format: "%02x", $0) }.joined()
     }
 
     private func diskCacheURL(for cacheKey: String) -> URL {
