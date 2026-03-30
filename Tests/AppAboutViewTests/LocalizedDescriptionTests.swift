@@ -66,18 +66,16 @@ import Foundation
 
 // MARK: - LocalizedDescription Localization Logic Tests
 
-@Test func testLocalizedDescriptionFallbackToEnglish() {
-    let desc = LocalizedDescription(
+@Test func testLocalizedDescriptionGermanLocaleSelection() {
+    let localizedDesc = LocalizedDescription(
         en: "English text",
         de: "German text"
     )
-    
-    // The localized string should never be empty
-    let localizedString = desc.localizedString
-    #expect(!localizedString.isEmpty)
-    
-    // For unsupported locales, should fall back to English
-    #expect(localizedString == "English text" || localizedString == "German text")
+
+    let fallbackDesc = LocalizedDescription(en: "English fallback")
+
+    #expect(localizedDesc.localizedString(for: Locale(identifier: "de_DE")) == "German text")
+    #expect(fallbackDesc.localizedString(for: Locale(identifier: "de_DE")) == "English fallback")
 }
 
 @Test func testLocalizedDescriptionWithEmptyEnglish() {
@@ -85,30 +83,15 @@ import Foundation
     #expect(desc.localizedString == "")
 }
 
-@Test func testLocalizedDescriptionAllLanguagesProvided() {
+@Test func testLocalizedDescriptionNorwegianAliases() {
     let desc = LocalizedDescription(
-        en: "Hello",
-        de: "Hallo",
-        es: "Hola",
-        fr: "Bonjour",
-        it: "Ciao",
-        ja: "こんにちは",
-        ko: "안녕하세요",
-        ru: "Привет",
-        zhHans: "你好",
-        zhHant: "你好"
+        en: "English text",
+        no: "Norsk tekst"
     )
-    
-    // Should return a valid localized string
-    let localizedString = desc.localizedString
-    #expect(!localizedString.isEmpty)
-    
-    // Should be one of the provided translations
-    let allTranslations = [
-        desc.en, desc.de!, desc.es!, desc.fr!, desc.it!,
-        desc.ja!, desc.ko!, desc.ru!, desc.zhHans!, desc.zhHant!
-    ]
-    #expect(allTranslations.contains(localizedString))
+
+    #expect(desc.localizedString(for: Locale(identifier: "no")) == "Norsk tekst")
+    #expect(desc.localizedString(for: Locale(identifier: "nb")) == "Norsk tekst")
+    #expect(desc.localizedString(for: Locale(identifier: "nn")) == "Norsk tekst")
 }
 
 // MARK: - LocalizedDescription Codable Tests
@@ -332,20 +315,20 @@ import Foundation
 
 // MARK: - LocalizedDescription Locale-Specific Tests
 
-@Test func testLocalizedDescriptionLanguageFallbacks() {
+@Test func testLocalizedDescriptionChineseScriptAndRegionHandling() {
     let desc = LocalizedDescription(
         en: "English fallback",
-        de: "German text",
-        es: "Spanish text"
+        zhHans: "Simplified Chinese text",
+        zhHant: "Traditional Chinese text"
     )
-    
-    // Test that we always get a non-empty string
-    let localizedString = desc.localizedString
-    #expect(!localizedString.isEmpty)
-    
-    // Should be one of the provided translations
-    let availableTranslations = [desc.en, desc.de, desc.es].compactMap { $0 }
-    #expect(availableTranslations.contains(localizedString))
+
+    #expect(desc.localizedString(for: Locale(identifier: "zh-Hans")) == "Simplified Chinese text")
+    #expect(desc.localizedString(for: Locale(identifier: "zh_CN")) == "Simplified Chinese text")
+    #expect(desc.localizedString(for: Locale(identifier: "zh_SG")) == "Simplified Chinese text")
+    #expect(desc.localizedString(for: Locale(identifier: "zh")) == "Simplified Chinese text")
+    #expect(desc.localizedString(for: Locale(identifier: "zh-Hant")) == "Traditional Chinese text")
+    #expect(desc.localizedString(for: Locale(identifier: "zh_HK")) == "Traditional Chinese text")
+    #expect(desc.localizedString(for: Locale(identifier: "zh_TW")) == "Traditional Chinese text")
 }
 
 @Test func testLocalizedDescriptionWithNilValues() {

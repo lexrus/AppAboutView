@@ -72,8 +72,11 @@ public struct LocalizedDescription: Codable, Hashable {
     }
 
     public var localizedString: String {
+        localizedString(for: .current)
+    }
+
+    public func localizedString(for locale: Locale) -> String {
         // Get the full language identifier including script if present
-        let locale = Locale.current
         let languageCode = locale.language.languageCode?.identifier ?? "en"
         let script = locale.language.script?.identifier
         
