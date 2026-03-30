@@ -1,3 +1,4 @@
+import CryptoKit
 import Foundation
 
 #if canImport(UIKit)
@@ -75,9 +76,13 @@ public class ImageCache: ObservableObject {
 
     // MARK: - Private Methods
 
+    nonisolated static func stableCacheKey(for urlString: String) -> String {
+        let digest = SHA256.hash(data: Data(urlString.utf8))
+        return digest.map { String(format: "%02x", $0) }.joined()
+    }
+
     private func cacheKey(for urlString: String) -> String {
-        // Use a simple hash of the URL as the cache key
-        return "\(urlString.hashValue)"
+        return Self.stableCacheKey(for: urlString)
     }
 
     private func diskCacheURL(for cacheKey: String) -> URL {
