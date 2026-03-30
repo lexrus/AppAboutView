@@ -7,12 +7,18 @@ public class AppShowcaseService: ObservableObject {
 
     private let remoteURL: URL?
     private let currentAppStoreID: String?
+    private let userDefaults: UserDefaults
     private let cacheKey = "cachedMyAppsData"
     private let lastFetchKey = "lastAppsFetchDate"
 
-    public init(remoteURL: URL? = nil, currentAppStoreID: String? = nil) {
+    public init(
+        remoteURL: URL? = nil,
+        currentAppStoreID: String? = nil,
+        userDefaults: UserDefaults = .standard
+    ) {
         self.remoteURL = remoteURL
         self.currentAppStoreID = currentAppStoreID
+        self.userDefaults = userDefaults
         loadApps()
     }
 
@@ -24,7 +30,7 @@ public class AppShowcaseService: ObservableObject {
     public func fetchRemoteAppsIfNeeded() {
         guard let remoteURL = remoteURL else { return }
 
-        let lastFetch = UserDefaults.standard.object(forKey: lastFetchKey) as? Date
+        let lastFetch = userDefaults.object(forKey: lastFetchKey) as? Date
 
         #if DEBUG
         let shouldFetch = true
@@ -59,7 +65,7 @@ public class AppShowcaseService: ObservableObject {
     }
 
     private func loadCachedApps() {
-        guard let data = UserDefaults.standard.data(forKey: cacheKey) else { return }
+        guard let data = userDefaults.data(forKey: cacheKey) else { return }
 
         do {
             let appsData = try JSONDecoder().decode(MyAppsData.self, from: data)
@@ -78,8 +84,8 @@ public class AppShowcaseService: ObservableObject {
             let (data, _) = try await URLSession.shared.data(from: url)
             let appsData = try JSONDecoder().decode(MyAppsData.self, from: data)
 
-            UserDefaults.standard.set(data, forKey: cacheKey)
-            UserDefaults.standard.set(Date(), forKey: lastFetchKey)
+            userDefaults.set(data, forKey: cacheKey)
+            userDefaults.set(Date(), forKey: lastFetchKey)
 
             self.apps = filterCurrentApp(from: appsData.apps)
 

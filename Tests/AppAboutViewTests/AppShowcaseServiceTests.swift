@@ -2,6 +2,22 @@ import Testing
 import Foundation
 @testable import AppAboutView
 
+private func makeIsolatedUserDefaults() -> (userDefaults: UserDefaults, suiteName: String) {
+    let suiteName = "AppShowcaseServiceTests.\(UUID().uuidString)"
+    guard let userDefaults = UserDefaults(suiteName: suiteName) else {
+        fatalError("Failed to create isolated UserDefaults suite")
+    }
+    userDefaults.removePersistentDomain(forName: suiteName)
+    return (userDefaults, suiteName)
+}
+
+private func clearUserDefaults(_ suiteName: String) {
+    guard let userDefaults = UserDefaults(suiteName: suiteName) else {
+        return
+    }
+    userDefaults.removePersistentDomain(forName: suiteName)
+}
+
 // MARK: - AppShowcaseService Tests
 
 @Test @MainActor func testAppShowcaseServiceInitialization() {
@@ -250,26 +266,21 @@ import Foundation
 // MARK: - UserDefaults Integration Tests
 
 @Test @MainActor func testAppShowcaseServiceUserDefaultsInteraction() {
-    // Clear any existing cached data
-    UserDefaults.standard.removeObject(forKey: "cachedMyAppsData")
-    UserDefaults.standard.removeObject(forKey: "lastAppsFetchDate")
+    let isolatedDefaults = makeIsolatedUserDefaults()
+    defer { clearUserDefaults(isolatedDefaults.suiteName) }
     
-    let service = AppShowcaseService()
+    let service = AppShowcaseService(userDefaults: isolatedDefaults.userDefaults)
     service.loadApps()
     
     // Service should work even with clean UserDefaults
     #expect(service.apps.isEmpty || !service.apps.isEmpty)
     
     // Test with corrupted cache data
-    UserDefaults.standard.set("invalid json data", forKey: "cachedMyAppsData")
+    isolatedDefaults.userDefaults.set("invalid json data", forKey: "cachedMyAppsData")
     
-    let serviceWithCorruptedCache = AppShowcaseService()
+    let serviceWithCorruptedCache = AppShowcaseService(userDefaults: isolatedDefaults.userDefaults)
     serviceWithCorruptedCache.loadApps()
     
     // Should handle corrupted cache gracefully
     #expect(serviceWithCorruptedCache.apps.isEmpty || !serviceWithCorruptedCache.apps.isEmpty)
-    
-    // Clean up
-    UserDefaults.standard.removeObject(forKey: "cachedMyAppsData")
-    UserDefaults.standard.removeObject(forKey: "lastAppsFetchDate")
 }
