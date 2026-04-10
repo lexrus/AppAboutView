@@ -47,25 +47,25 @@
 "AppAboutView.OK" = "好的";
 
 /* Accessibility hint for Rate on App Store button */
-"AppAboutView.Accessibility.RateApp" = "Opens the App Store to rate this app";
+"AppAboutView.Accessibility.RateApp" = "開啟App Store以評價此應用程式";
 
 /* Accessibility hint for Give Feedback button */
-"AppAboutView.Accessibility.OpenFeedbackEmail" = "Opens your email app to send feedback";
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "開啟您的電子郵件應用程式以傳送意見";
 
 /* Accessibility hint for Privacy Policy button */
-"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Opens the privacy policy in your browser";
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "在瀏覽器中開啟隱私政策";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Opens the acknowledgments screen";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "開啟致謝畫面";
 
 /* Accessibility hint for external link buttons */
-"AppAboutView.Accessibility.ExternalLink" = "Opens an external link";
+"AppAboutView.Accessibility.ExternalLink" = "開啟外部連結";
 
 /* Accessibility hint for App Showcase item button */
-"AppAboutView.Accessibility.OpenInAppStore" = "Opens in the App Store";
+"AppAboutView.Accessibility.OpenInAppStore" = "在App Store中開啟";
 
 /* Accessibility label for purchase loading overlay */
-"AppAboutView.Accessibility.ProcessingPurchase" = "Processing purchase, please wait";
+"AppAboutView.Accessibility.ProcessingPurchase" = "正在處理購買，請稍候";
 
 /* Accessibility hint for coffee tip in-app purchase button */
-"AppAboutView.Accessibility.CoffeeTip" = "Completes an in-app purchase to support the developer";
+"AppAboutView.Accessibility.CoffeeTip" = "完成應用程式內購買以支持開發者";

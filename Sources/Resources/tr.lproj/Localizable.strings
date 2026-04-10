@@ -47,25 +47,25 @@
 "AppAboutView.OK" = "Tamam";
 
 /* Accessibility hint for Rate on App Store button */
-"AppAboutView.Accessibility.RateApp" = "Opens the App Store to rate this app";
+"AppAboutView.Accessibility.RateApp" = "Bu uygulamayı değerlendirmek için App Store'u açar";
 
 /* Accessibility hint for Give Feedback button */
-"AppAboutView.Accessibility.OpenFeedbackEmail" = "Opens your email app to send feedback";
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "Geri bildirim göndermek için e-posta uygulamanızı açar";
 
 /* Accessibility hint for Privacy Policy button */
-"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Opens the privacy policy in your browser";
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Tarayıcınızda gizlilik politikasını açar";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Opens the acknowledgments screen";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Teşekkürler ekranını açar";
 
 /* Accessibility hint for external link buttons */
-"AppAboutView.Accessibility.ExternalLink" = "Opens an external link";
+"AppAboutView.Accessibility.ExternalLink" = "Harici bir bağlantı açar";
 
 /* Accessibility hint for App Showcase item button */
-"AppAboutView.Accessibility.OpenInAppStore" = "Opens in the App Store";
+"AppAboutView.Accessibility.OpenInAppStore" = "App Store'da açar";
 
 /* Accessibility label for purchase loading overlay */
-"AppAboutView.Accessibility.ProcessingPurchase" = "Processing purchase, please wait";
+"AppAboutView.Accessibility.ProcessingPurchase" = "Satın alma işleniyor, lütfen bekleyin";
 
 /* Accessibility hint for coffee tip in-app purchase button */
-"AppAboutView.Accessibility.CoffeeTip" = "Completes an in-app purchase to support the developer";
+"AppAboutView.Accessibility.CoffeeTip" = "Geliştiriciyi desteklemek için uygulama içi satın almayı tamamlar";

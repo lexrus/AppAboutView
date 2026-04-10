@@ -72,10 +72,12 @@ public struct AppAboutView: View {
         ZStack {
 #if os(macOS)
             buildMacOSLayout()
+                .accessibilityHidden(isLoadingPurchase)
 #else
             buildNormalLayout()
+                .accessibilityHidden(isLoadingPurchase)
 #endif
-            
+
             if isLoadingPurchase {
                 Color.black.opacity(0.3)
                     .ignoresSafeArea()
@@ -88,6 +90,7 @@ public struct AppAboutView: View {
                 }
                 .padding(24)
                 .background(Material.regular, in: RoundedRectangle(cornerRadius: 16))
+                .accessibilityElement(children: .contain)
             }
         }
         .task {

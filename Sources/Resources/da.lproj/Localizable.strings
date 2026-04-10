@@ -47,25 +47,25 @@
 "AppAboutView.OK" = "OK";
 
 /* Accessibility hint for Rate on App Store button */
-"AppAboutView.Accessibility.RateApp" = "Opens the App Store to rate this app";
+"AppAboutView.Accessibility.RateApp" = "Åbner App Store for at bedømme denne app";
 
 /* Accessibility hint for Give Feedback button */
-"AppAboutView.Accessibility.OpenFeedbackEmail" = "Opens your email app to send feedback";
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "Åbner din mail-app for at sende feedback";
 
 /* Accessibility hint for Privacy Policy button */
-"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Opens the privacy policy in your browser";
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Åbner privatlivspolitikken i din browser";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Opens the acknowledgments screen";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Åbner anerkendelser skærmen";
 
 /* Accessibility hint for external link buttons */
-"AppAboutView.Accessibility.ExternalLink" = "Opens an external link";
+"AppAboutView.Accessibility.ExternalLink" = "Åbner et eksternt link";
 
 /* Accessibility hint for App Showcase item button */
-"AppAboutView.Accessibility.OpenInAppStore" = "Opens in the App Store";
+"AppAboutView.Accessibility.OpenInAppStore" = "Åbner i App Store";
 
 /* Accessibility label for purchase loading overlay */
-"AppAboutView.Accessibility.ProcessingPurchase" = "Processing purchase, please wait";
+"AppAboutView.Accessibility.ProcessingPurchase" = "Behandler køb, vent venligst";
 
 /* Accessibility hint for coffee tip in-app purchase button */
-"AppAboutView.Accessibility.CoffeeTip" = "Completes an in-app purchase to support the developer";
+"AppAboutView.Accessibility.CoffeeTip" = "Gennemfører et køb i appen for at støtte udvikleren";

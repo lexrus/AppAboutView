@@ -47,25 +47,25 @@
 "AppAboutView.OK" = "OK";
 
 /* Accessibility hint for Rate on App Store button */
-"AppAboutView.Accessibility.RateApp" = "Opens the App Store to rate this app";
+"AppAboutView.Accessibility.RateApp" = "Ouvre l'App Store pour évaluer cette app";
 
 /* Accessibility hint for Give Feedback button */
-"AppAboutView.Accessibility.OpenFeedbackEmail" = "Opens your email app to send feedback";
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "Ouvre votre application de messagerie pour envoyer des commentaires";
 
 /* Accessibility hint for Privacy Policy button */
-"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Opens the privacy policy in your browser";
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Ouvre la politique de confidentialité dans votre navigateur";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Opens the acknowledgments screen";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Ouvre l'écran des remerciements";
 
 /* Accessibility hint for external link buttons */
-"AppAboutView.Accessibility.ExternalLink" = "Opens an external link";
+"AppAboutView.Accessibility.ExternalLink" = "Ouvre un lien externe";
 
 /* Accessibility hint for App Showcase item button */
-"AppAboutView.Accessibility.OpenInAppStore" = "Opens in the App Store";
+"AppAboutView.Accessibility.OpenInAppStore" = "Ouvre dans l'App Store";
 
 /* Accessibility label for purchase loading overlay */
-"AppAboutView.Accessibility.ProcessingPurchase" = "Processing purchase, please wait";
+"AppAboutView.Accessibility.ProcessingPurchase" = "Traitement de l'achat, veuillez patienter";
 
 /* Accessibility hint for coffee tip in-app purchase button */
-"AppAboutView.Accessibility.CoffeeTip" = "Completes an in-app purchase to support the developer";
+"AppAboutView.Accessibility.CoffeeTip" = "Effectue un achat intégré pour soutenir le développeur";
