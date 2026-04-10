@@ -45,3 +45,27 @@
 
 /* OK button for alert */
 "AppAboutView.OK" = "ठीक है";
+
+/* Accessibility hint for Rate on App Store button */
+"AppAboutView.Accessibility.RateApp" = "इस ऐप को रेट करने के लिए App Store खोलता है";
+
+/* Accessibility hint for Give Feedback button */
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "फीडबैक भेजने के लिए आपका ईमेल ऐप खोलता है";
+
+/* Accessibility hint for Privacy Policy button */
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "आपके ब्राउज़र में गोपनीयता नीति खोलता है";
+
+/* Accessibility hint for Acknowledgments button */
+"AppAboutView.Accessibility.OpenAcknowledgments" = "धन्यवाद स्क्रीन खोलता है";
+
+/* Accessibility hint for external link buttons */
+"AppAboutView.Accessibility.ExternalLink" = "एक बाहरी लिंक खोलता है";
+
+/* Accessibility hint for App Showcase item button */
+"AppAboutView.Accessibility.OpenInAppStore" = "App Store में खोलता है";
+
+/* Accessibility label for purchase loading overlay */
+"AppAboutView.Accessibility.ProcessingPurchase" = "खरीदारी प्रोसेस हो रही है, कृपया प्रतीक्षा करें";
+
+/* Accessibility hint for coffee tip in-app purchase button */
+"AppAboutView.Accessibility.CoffeeTip" = "डेवलपर का समर्थन करने के लिए इन-ऐप खरीदारी पूर्ण करता है";

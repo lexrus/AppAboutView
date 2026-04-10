@@ -28,6 +28,7 @@ public struct AppShowcaseView: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .opacity(0.5)
+                    .accessibilityAddTraits(.isHeader)
                 Spacer()
             }
             #endif
@@ -45,6 +46,7 @@ public struct AppShowcaseView: View {
                             Divider()
                                 .opacity(0.5)
                                 .padding(.init(top: 4, leading: 52, bottom: 4, trailing: 0))
+                                .accessibilityHidden(true)
                         }
                     }
                 }
@@ -99,6 +101,7 @@ struct AppShowcaseItemView: View {
                     appIconView()
                     Spacer()
                 }
+                .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(app.name)
@@ -131,10 +134,12 @@ struct AppShowcaseItemView: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
                     .font(.caption)
+                    .accessibilityHidden(true)
             }
             .padding(.vertical, 8)
         }
         .buttonStyle(.plain)
+        .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenInAppStore", bundle: .module))
 #if os(macOS)
         .onHover { hovering in
             isHovered = hovering
@@ -239,6 +244,7 @@ struct PlatformTagView: View {
             .font(.system(size: 10))
             .foregroundColor(.secondary)
             .frame(width: 12, height: 12)
+            .accessibilityLabel(platform.displayName)
     }
 }
 
@@ -248,6 +254,7 @@ struct EmptyStateView: View {
             Image(systemName: "square.grid.2x2")
                 .font(.system(size: 24))
                 .foregroundColor(.secondary)
+                .accessibilityHidden(true)
 
             Text(String(localized: "AppAboutView.NoAppsFound", bundle: .module))
                 .font(.subheadline)

@@ -45,3 +45,27 @@
 
 /* OK button for alert */
 "AppAboutView.OK" = "OK";
+
+/* Accessibility hint for Rate on App Store button */
+"AppAboutView.Accessibility.RateApp" = "Åpner App Store for å vurdere denne appen";
+
+/* Accessibility hint for Give Feedback button */
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "Åpner e-postappen din for å sende tilbakemelding";
+
+/* Accessibility hint for Privacy Policy button */
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Åpner personvernreglene i nettleseren din";
+
+/* Accessibility hint for Acknowledgments button */
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Åpner takk-skjermen";
+
+/* Accessibility hint for external link buttons */
+"AppAboutView.Accessibility.ExternalLink" = "Åpner en ekstern lenke";
+
+/* Accessibility hint for App Showcase item button */
+"AppAboutView.Accessibility.OpenInAppStore" = "Åpner i App Store";
+
+/* Accessibility label for purchase loading overlay */
+"AppAboutView.Accessibility.ProcessingPurchase" = "Behandler kjøp, vennligst vent";
+
+/* Accessibility hint for coffee tip in-app purchase button */
+"AppAboutView.Accessibility.CoffeeTip" = "Fullfører et kjøp i appen for å støtte utvikleren";

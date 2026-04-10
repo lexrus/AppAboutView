@@ -17,9 +17,11 @@ extension AppAboutView {
                             .resizable()
                             .frame(width: 96, height: 96)
                             .clipShape(RoundedRectangle(cornerRadius: platformCornerRadius))
+                            .accessibilityHidden(true)
                     } else {
                         defaultAppIcon
                             .frame(width: 96, height: 96)
+                            .accessibilityHidden(true)
                     }
 
                     Text(appName)
@@ -30,6 +32,7 @@ extension AppAboutView {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
+                .accessibilityElement(children: .combine)
                 .padding(.top)
 
                 // Actions Form
@@ -42,6 +45,7 @@ extension AppAboutView {
                             Divider()
                                 .opacity(0.5)
                                 .padding(.init(top: 4, leading: 32, bottom: 4, trailing: 0))
+                                .accessibilityHidden(true)
                         }
                     }
                 }
@@ -69,6 +73,7 @@ extension AppAboutView {
                     Text(String(localized: "AppAboutView.MyApps", bundle: .module))
                         .font(.headline)
                         .fontWeight(.medium)
+                        .accessibilityAddTraits(.isHeader)
 
                     AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
                         .background(formBackgroundColor)

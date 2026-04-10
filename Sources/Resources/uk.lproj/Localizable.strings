@@ -45,3 +45,27 @@
 
 /* OK button for alert */
 "AppAboutView.OK" = "OK";
+
+/* Accessibility hint for Rate on App Store button */
+"AppAboutView.Accessibility.RateApp" = "Відкриває App Store для оцінки цього додатка";
+
+/* Accessibility hint for Give Feedback button */
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "Відкриває вашу програму електронної пошти для надсилання відгуку";
+
+/* Accessibility hint for Privacy Policy button */
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Відкриває політику конфіденційності у вашому браузері";
+
+/* Accessibility hint for Acknowledgments button */
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Відкриває екран подяк";
+
+/* Accessibility hint for external link buttons */
+"AppAboutView.Accessibility.ExternalLink" = "Відкриває зовнішнє посилання";
+
+/* Accessibility hint for App Showcase item button */
+"AppAboutView.Accessibility.OpenInAppStore" = "Відкриває в App Store";
+
+/* Accessibility label for purchase loading overlay */
+"AppAboutView.Accessibility.ProcessingPurchase" = "Обробка покупки, будь ласка, зачекайте";
+
+/* Accessibility hint for coffee tip in-app purchase button */
+"AppAboutView.Accessibility.CoffeeTip" = "Завершує покупку в додатку для підтримки розробника";

@@ -45,3 +45,27 @@
 
 /* OK button for alert */
 "AppAboutView.OK" = "OK";
+
+/* Accessibility hint for Rate on App Store button */
+"AppAboutView.Accessibility.RateApp" = "Abre la App Store para calificar esta app";
+
+/* Accessibility hint for Give Feedback button */
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "Abre tu aplicación de correo para enviar comentarios";
+
+/* Accessibility hint for Privacy Policy button */
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "Abre la política de privacidad en tu navegador";
+
+/* Accessibility hint for Acknowledgments button */
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Abre la pantalla de reconocimientos";
+
+/* Accessibility hint for external link buttons */
+"AppAboutView.Accessibility.ExternalLink" = "Abre un enlace externo";
+
+/* Accessibility hint for App Showcase item button */
+"AppAboutView.Accessibility.OpenInAppStore" = "Abre en la App Store";
+
+/* Accessibility label for purchase loading overlay */
+"AppAboutView.Accessibility.ProcessingPurchase" = "Procesando compra, por favor espera";
+
+/* Accessibility hint for coffee tip in-app purchase button */
+"AppAboutView.Accessibility.CoffeeTip" = "Completa una compra dentro de la app para apoyar al desarrollador";

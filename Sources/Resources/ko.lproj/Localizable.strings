@@ -45,3 +45,27 @@
 
 /* OK button for alert */
 "AppAboutView.OK" = "확인";
+
+/* Accessibility hint for Rate on App Store button */
+"AppAboutView.Accessibility.RateApp" = "App Store를 열어 이 앱을 평가합니다";
+
+/* Accessibility hint for Give Feedback button */
+"AppAboutView.Accessibility.OpenFeedbackEmail" = "이메일 앱을 열어 피드백을 보냅니다";
+
+/* Accessibility hint for Privacy Policy button */
+"AppAboutView.Accessibility.OpenPrivacyPolicy" = "브라우저에서 개인정보 보호정책을 엽니다";
+
+/* Accessibility hint for Acknowledgments button */
+"AppAboutView.Accessibility.OpenAcknowledgments" = "감사의 글 화면을 엽니다";
+
+/* Accessibility hint for external link buttons */
+"AppAboutView.Accessibility.ExternalLink" = "외부 링크를 엽니다";
+
+/* Accessibility hint for App Showcase item button */
+"AppAboutView.Accessibility.OpenInAppStore" = "App Store에서 엽니다";
+
+/* Accessibility label for purchase loading overlay */
+"AppAboutView.Accessibility.ProcessingPurchase" = "구매 처리 중입니다. 잠시만 기다려 주세요";
+
+/* Accessibility hint for coffee tip in-app purchase button */
+"AppAboutView.Accessibility.CoffeeTip" = "개발자를 지원하기 위해 인앱 구매를 완료합니다";
