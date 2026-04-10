@@ -79,10 +79,12 @@ public struct AppAboutView: View {
             if isLoadingPurchase {
                 Color.black.opacity(0.3)
                     .ignoresSafeArea()
-                
+                    .accessibilityHidden(true)
+
                 VStack(spacing: 16) {
                     ProgressView()
                         .scaleEffect(1.2)
+                        .accessibilityLabel(String(localized: "AppAboutView.Accessibility.ProcessingPurchase", bundle: .module))
                 }
                 .padding(24)
                 .background(Material.regular, in: RoundedRectangle(cornerRadius: 16))
@@ -122,6 +124,7 @@ public struct AppAboutView: View {
                         Divider()
                             .opacity(0.5)
                             .padding(.init(top: 4, leading: 32, bottom: 4, trailing: 0))
+                            .accessibilityHidden(true)
                     }
                 }
             }
@@ -161,6 +164,7 @@ public struct AppAboutView: View {
                 ) {
                     purchaseCoffeeTip(productID: productID)
                 }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.CoffeeTip", bundle: .module))
             )
 #else
             return AnyView(
@@ -170,6 +174,7 @@ public struct AppAboutView: View {
                 ) {
                     purchaseCoffeeTip(productID: productID)
                 }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.CoffeeTip", bundle: .module))
             )
 #endif
         }
@@ -297,6 +302,7 @@ public struct AppAboutView: View {
             ) {
                 openAppStoreURL()
             }
+            .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
         ))
 
         if privacyPolicy != nil {
@@ -310,6 +316,7 @@ public struct AppAboutView: View {
                 ) {
                     openPrivacyPolicyURL()
                 }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenPrivacyPolicy", bundle: .module))
             ))
         }
 
@@ -324,6 +331,7 @@ public struct AppAboutView: View {
                 ) {
                     openFeedbackURL()
                 }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenFeedbackEmail", bundle: .module))
             ))
         }
 
@@ -338,6 +346,7 @@ public struct AppAboutView: View {
                 ) {
                     onAcknowledgments?()
                 }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenAcknowledgments", bundle: .module))
             ))
         }
 
@@ -350,6 +359,7 @@ public struct AppAboutView: View {
                     ) {
                         openAdditionalLinkURL(link.url)
                     }
+                    .accessibilityHint(String(localized: "AppAboutView.Accessibility.ExternalLink", bundle: .module))
                 ))
             }
         }
@@ -371,6 +381,7 @@ public struct AppAboutView: View {
             ) {
                 openAppStoreURL()
             }
+            .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
         ))
 
         if feedbackEmail != nil {
@@ -384,6 +395,7 @@ public struct AppAboutView: View {
                 ) {
                     openFeedbackURL()
                 }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenFeedbackEmail", bundle: .module))
             ))
         }
 
@@ -401,6 +413,7 @@ public struct AppAboutView: View {
                     icon
                         .foregroundColor(.accentColor)
                         .frame(width: 20, height: 20)
+                        .accessibilityHidden(true)
                 }
                 Text(verbatim: str)
                     .foregroundColor(.primary)
@@ -408,6 +421,7 @@ public struct AppAboutView: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
                     .font(.caption)
+                    .accessibilityHidden(true)
             }
             .frame(minHeight: 30)
             .padding(.vertical, 2)

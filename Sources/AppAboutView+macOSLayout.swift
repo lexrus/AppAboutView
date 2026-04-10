@@ -18,15 +18,18 @@ extension AppAboutView {
                             .resizable()
                             .frame(width: 128, height: 128)
                             .clipShape(RoundedRectangle(cornerRadius: platformCornerRadius))
+                            .accessibilityHidden(true)
                     } else {
                         defaultAppIcon
                             .frame(width: 128, height: 128)
+                            .accessibilityHidden(true)
                     }
 
                     Text(appName)
                         .font(.largeTitle)
                         .fontWeight(.medium)
                         .multilineTextAlignment(.center)
+                        .accessibilityAddTraits(.isHeader)
 
                     Text(String(format: String(localized: "AppAboutView.Version", bundle: .module), appVersion, buildVersion))
                         .font(.subheadline)
@@ -42,6 +45,7 @@ extension AppAboutView {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .underline()
+                            .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenPrivacyPolicy", bundle: .module))
                         }
 
                         if onAcknowledgments != nil {
@@ -52,6 +56,7 @@ extension AppAboutView {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .underline()
+                            .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenAcknowledgments", bundle: .module))
                         }
 
                         if !additionalLinks.isEmpty {
@@ -63,6 +68,7 @@ extension AppAboutView {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .underline()
+                                .accessibilityHint(String(localized: "AppAboutView.Accessibility.ExternalLink", bundle: .module))
                             }
                         }
                     }
@@ -93,6 +99,7 @@ extension AppAboutView {
                         ) {
                             openAppStoreURL()
                         }
+                        .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
 
                         if feedbackEmail != nil {
                             GlassButton(
@@ -101,6 +108,7 @@ extension AppAboutView {
                             ) {
                                 openFeedbackURL()
                             }
+                            .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenFeedbackEmail", bundle: .module))
                         }
                     }
 
