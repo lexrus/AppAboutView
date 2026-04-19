@@ -108,6 +108,7 @@ public struct AppAboutView: View {
             Text(String(localized: "AppAboutView.SupportDeveloper", bundle: .module))
                 .font(.headline)
                 .fontWeight(.medium)
+                .accessibilityAddTraits(.isHeader)
 #endif
 
 #if os(macOS)
@@ -431,6 +432,7 @@ public struct AppAboutView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(str)
     }
 
     internal var platformCornerRadius: CGFloat {

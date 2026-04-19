@@ -53,7 +53,7 @@ public struct GlassButton: View {
                 Button(action: action) {
                     HStack {
                         if let systemImage, let text {
-                            Label { text } icon: { Image(systemName: systemImage) }
+                            Label { text } icon: { Image(systemName: systemImage).accessibilityHidden(true) }
                         } else if let text {
                             text
                         } else if let systemImage {
@@ -81,6 +81,7 @@ extension GlassButton {
                 if let systemImage {
                     Image(systemName: systemImage)
                         .foregroundStyle(.primary)
+                        .accessibilityHidden(text != nil)
                 }
                 if let text {
                     text

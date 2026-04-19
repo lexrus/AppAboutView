@@ -11,10 +11,10 @@
 "AppAboutView.PrivacyPolicy" = "गोपनीयता नीति";
 
 /* Button to open feedback email */
-"AppAboutView.GiveFeedback" = "प्रतिक्रिया";
+"AppAboutView.GiveFeedback" = "फ़ीडबैक दें";
 
 /* Button to show acknowledgments */
-"AppAboutView.Acknowledgments" = "स्वीकृति";
+"AppAboutView.Acknowledgments" = "आभार";
 
 /* Button to open App Store rating page */
 "AppAboutView.RateOnAppStore" = "ऐप रेट करें";

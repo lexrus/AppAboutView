@@ -130,6 +130,7 @@ struct AppShowcaseItemView: View {
                         Spacer()
                     }
                 }
+                .accessibilityElement(children: .combine)
 
                 Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
@@ -139,6 +140,7 @@ struct AppShowcaseItemView: View {
             .padding(.vertical, 8)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(app.name)
         .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenInAppStore", bundle: .module))
 #if os(macOS)
         .onHover { hovering in
@@ -206,6 +208,7 @@ struct AppShowcaseItemView: View {
             .resizable()
             .frame(width: 36, height: 36)
             .foregroundColor(.secondary.opacity(0.1))
+            .accessibilityHidden(true)
     }
 
     private func loadLocalAppIcon() -> Image? {
