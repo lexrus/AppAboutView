@@ -35,7 +35,7 @@
 "AppAboutView.BuyMeACoffee" = "Kjøp meg en kaffe";
 
 /* Button to buy multiple coffees - %d is the number of coffees */
-"AppAboutView.BuyMeCoffees" = "Kjøp meg %d kaffer";
+"AppAboutView.BuyMeCoffees" = "Kjøp meg %d kopper kaffe";
 
 /* Thank you alert title */
 "AppAboutView.ThankYou" = "Takk!";
@@ -56,7 +56,7 @@
 "AppAboutView.Accessibility.OpenPrivacyPolicy" = "Åpner personvernreglene i nettleseren din";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Åpner takk-skjermen";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Åpner anerkjennelsesskjermen";
 
 /* Accessibility hint for external link buttons */
 "AppAboutView.Accessibility.ExternalLink" = "Åpner en ekstern lenke";

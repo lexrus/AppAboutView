@@ -11,7 +11,7 @@
 "AppAboutView.PrivacyPolicy" = "Privatlivspolitik";
 
 /* Button to open feedback email */
-"AppAboutView.GiveFeedback" = "Feedback";
+"AppAboutView.GiveFeedback" = "Giv feedback";
 
 /* Button to show acknowledgments */
 "AppAboutView.Acknowledgments" = "Anerkendelser";
@@ -56,7 +56,7 @@
 "AppAboutView.Accessibility.OpenPrivacyPolicy" = "Åbner privatlivspolitikken i din browser";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Åbner anerkendelser skærmen";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Åbner anerkendelseskærmen";
 
 /* Accessibility hint for external link buttons */
 "AppAboutView.Accessibility.ExternalLink" = "Åbner et eksternt link";

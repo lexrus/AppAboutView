@@ -11,7 +11,7 @@
 "AppAboutView.PrivacyPolicy" = "Privacybeleid";
 
 /* Button to open feedback email */
-"AppAboutView.GiveFeedback" = "Feedback";
+"AppAboutView.GiveFeedback" = "Geef feedback";
 
 /* Button to show acknowledgments */
 "AppAboutView.Acknowledgments" = "Dankbetuigingen";

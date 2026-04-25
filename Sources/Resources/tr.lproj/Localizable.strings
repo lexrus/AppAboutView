@@ -14,7 +14,7 @@
 "AppAboutView.GiveFeedback" = "Geri Bildirim";
 
 /* Button to show acknowledgments */
-"AppAboutView.Acknowledgments" = "Teşekkürler";
+"AppAboutView.Acknowledgments" = "Kaynaklar";
 
 /* Button to open App Store rating page */
 "AppAboutView.RateOnAppStore" = "Uygulamayı Değerlendir";
@@ -56,7 +56,7 @@
 "AppAboutView.Accessibility.OpenPrivacyPolicy" = "Tarayıcınızda gizlilik politikasını açar";
 
 /* Accessibility hint for Acknowledgments button */
-"AppAboutView.Accessibility.OpenAcknowledgments" = "Teşekkürler ekranını açar";
+"AppAboutView.Accessibility.OpenAcknowledgments" = "Kaynaklar ekranını açar";
 
 /* Accessibility hint for external link buttons */
 "AppAboutView.Accessibility.ExternalLink" = "Harici bir bağlantı açar";

@@ -11,7 +11,7 @@
 "AppAboutView.PrivacyPolicy" = "Integritetspolicy";
 
 /* Button to open feedback email */
-"AppAboutView.GiveFeedback" = "Feedback";
+"AppAboutView.GiveFeedback" = "Skicka feedback";
 
 /* Button to show acknowledgments */
 "AppAboutView.Acknowledgments" = "Erkännanden";
@@ -35,7 +35,7 @@
 "AppAboutView.BuyMeACoffee" = "Köp en kaffe till mig";
 
 /* Button to buy multiple coffees - %d is the number of coffees */
-"AppAboutView.BuyMeCoffees" = "Köp %d kaffar till mig";
+"AppAboutView.BuyMeCoffees" = "Köp %d koppar kaffe till mig";
 
 /* Thank you alert title */
 "AppAboutView.ThankYou" = "Tack!";

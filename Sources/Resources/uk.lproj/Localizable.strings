@@ -35,7 +35,7 @@
 "AppAboutView.BuyMeACoffee" = "Купити мені каву";
 
 /* Button to buy multiple coffees - %d is the number of coffees */
-"AppAboutView.BuyMeCoffees" = "Купити мені %d кави";
+"AppAboutView.BuyMeCoffees" = "Купити мені %d кав";
 
 /* Thank you alert title */
 "AppAboutView.ThankYou" = "Дякую!";
