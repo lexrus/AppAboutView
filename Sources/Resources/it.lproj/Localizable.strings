@@ -8,7 +8,7 @@
 "AppAboutView.Version" = "Versione %@ (%@)";
 
 /* Button to open privacy policy */
-"AppAboutView.PrivacyPolicy" = "Privacy Policy";
+"AppAboutView.PrivacyPolicy" = "Informativa sulla Privacy";
 
 /* Button to open feedback email */
 "AppAboutView.GiveFeedback" = "Invia feedback";
