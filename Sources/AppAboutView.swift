@@ -302,7 +302,7 @@ public struct AppAboutView: View {
                     localized: "AppAboutView.RateOnAppStore",
                     bundle: .module
                 ),
-                icon: Image(systemName: "hand.thumbsup.fill")
+                icon: Image(systemName: "star.fill")
             ) {
                 openAppStoreURL()
             }
@@ -381,7 +381,7 @@ public struct AppAboutView: View {
                     localized: "AppAboutView.RateOnAppStore",
                     bundle: .module
                 ),
-                icon: Image(systemName: "hand.thumbsup.fill")
+                icon: Image(systemName: "star.fill")
             ) {
                 openAppStoreURL()
             }

@@ -20,9 +20,17 @@ public struct AppShowcaseView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            #if os(macOS)
-            HStack(alignment: .center) {
+        #if os(macOS)
+        macOSBody
+        #else
+        defaultBody
+        #endif
+    }
+
+    #if os(macOS)
+    private var macOSBody: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
                 Spacer()
                 Text(String(localized: "AppAboutView.MyApps", bundle: .module))
                     .font(.footnote)
@@ -31,8 +39,56 @@ public struct AppShowcaseView: View {
                     .accessibilityAddTraits(.isHeader)
                 Spacer()
             }
-            #endif
 
+            ScrollView(.vertical) {
+                LazyVStack(spacing: 0) {
+                    if showcaseService.apps.isEmpty {
+                        EmptyStateView()
+                    } else {
+                        ForEach(Array(showcaseService.apps.enumerated()), id: \.element.id) { index, app in
+                            AppShowcaseItemView(app: app) {
+                                openAppStore(for: app)
+                            }
+
+                            if index < showcaseService.apps.count - 1 {
+                                Divider()
+                                    .opacity(0.5)
+                                    .padding(.init(top: 4, leading: 52, bottom: 4, trailing: 0))
+                                    .accessibilityHidden(true)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+            }
+            .frame(maxHeight: .infinity)
+            .mask(
+                LinearGradient(
+                    stops: [
+                        .init(color: .clear, location: 0),
+                        .init(color: .black, location: 0.04),
+                        .init(color: .black, location: 0.96),
+                        .init(color: .clear, location: 1),
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
+        }
+        .onAppear {
+            showcaseService.fetchRemoteAppsIfNeeded()
+        }
+    }
+    #endif
+
+    private var defaultBody: some View {
+        VStack(alignment: .leading, spacing: 4) {
             if showcaseService.apps.isEmpty {
                 EmptyStateView()
             } else {

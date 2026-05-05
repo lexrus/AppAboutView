@@ -88,14 +88,15 @@ extension AppAboutView {
             .padding(.leading, 30)
             .padding(.vertical, 30)
 
-            // Right Column - Scrollable
-            ScrollView(.vertical) {
+            // Right Column - Fixed header, scrollable list
+            VStack(spacing: 16) {
+                // Fixed top section
                 VStack(spacing: 16) {
                     // Action buttons using GlassButton
                     HStack(spacing: 16) {
                         GlassButton(
                             Text(String(localized: "AppAboutView.RateOnAppStore", bundle: .module)),
-                            systemImage: "hand.thumbsup.fill"
+                            systemImage: "star.fill"
                         ) {
                             openAppStoreURL()
                         }
@@ -118,16 +119,21 @@ extension AppAboutView {
                             .transition(.opacity)
                             .animation(.easeIn(duration: 0.3), value: productsLoaded)
                     }
-
-                    // App Showcase Section
-                    if appsShowcaseURL != nil {
-                        AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
-                    }
                 }
                 .padding(.horizontal, 30)
-                .padding(.vertical, 30)
+                .padding(.top, 30)
+
+                // App Showcase Section - scrolling is handled internally
+                if appsShowcaseURL != nil {
+                    AppShowcaseView(remoteURL: appsShowcaseURL, currentAppStoreID: appStoreID)
+                        .padding(.horizontal, 30)
+                        .padding(.bottom, 30)
+                        .frame(maxHeight: .infinity)
+                } else {
+                    Spacer()
+                }
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .navigationTitle(
             String(localized: "AppAboutView.About", bundle: .module)
