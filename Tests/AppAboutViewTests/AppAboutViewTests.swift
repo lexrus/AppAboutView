@@ -41,6 +41,35 @@ import SwiftUI
     #expect(view.feedbackEmailBody == "Steps to reproduce:")
 }
 
+@Test @MainActor func testRateAppButtonVisibilityDefaultsToShown() {
+    let view = AppAboutView(
+        appName: "Default Visibility App",
+        appStoreID: "123456789"
+    )
+
+    #expect(view.showsRateAppButton == true)
+}
+
+@Test @MainActor func testRateAppButtonVisibilityCanBeHidden() {
+    let view = AppAboutView(
+        appName: "Hidden Rate App Button",
+        appStoreID: "123456789",
+        showsRateAppButton: false
+    )
+
+    #expect(view.showsRateAppButton == false)
+}
+
+@Test @MainActor func testRateAppButtonVisibilityFromMainBundle() {
+    let view = AppAboutView.fromMainBundle(
+        appName: "Main Bundle Visibility App",
+        appStoreID: "123456789",
+        showsRateAppButton: false
+    )
+
+    #expect(view.showsRateAppButton == false)
+}
+
 @Test @MainActor func testAppAboutViewWithOptionalParameters() {
     let view = AppAboutView(
         appName: "Minimal App",

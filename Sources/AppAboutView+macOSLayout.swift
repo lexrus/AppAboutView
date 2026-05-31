@@ -93,23 +93,27 @@ extension AppAboutView {
                 // Fixed top section
                 VStack(spacing: 16) {
                     // Action buttons using GlassButton
-                    HStack(spacing: 16) {
-                        GlassButton(
-                            Text(String(localized: "AppAboutView.RateOnAppStore", bundle: .module)),
-                            systemImage: "star.fill"
-                        ) {
-                            openAppStoreURL()
-                        }
-                        .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
-
-                        if feedbackEmail != nil {
-                            GlassButton(
-                                Text(String(localized: "AppAboutView.GiveFeedback", bundle: .module)),
-                                systemImage: "envelope"
-                            ) {
-                                openFeedbackURL()
+                    if showsRateAppButton || feedbackEmail != nil {
+                        HStack(spacing: 16) {
+                            if showsRateAppButton {
+                                GlassButton(
+                                    Text(String(localized: "AppAboutView.RateOnAppStore", bundle: .module)),
+                                    systemImage: "star.fill"
+                                ) {
+                                    openAppStoreURL()
+                                }
+                                .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
                             }
-                            .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenFeedbackEmail", bundle: .module))
+
+                            if feedbackEmail != nil {
+                                GlassButton(
+                                    Text(String(localized: "AppAboutView.GiveFeedback", bundle: .module)),
+                                    systemImage: "envelope"
+                                ) {
+                                    openFeedbackURL()
+                                }
+                                .accessibilityHint(String(localized: "AppAboutView.Accessibility.OpenFeedbackEmail", bundle: .module))
+                            }
                         }
                     }
 

@@ -60,6 +60,7 @@ AppAboutView.fromMainBundle(
     feedbackEmailSubject: "MyApp Feedback",
     feedbackEmailBody: "App Version: 1.2.3\nDevice: iPhone",
     appStoreID: "123456789",
+    showsRateAppButton: false, // Optional: hide the Rate App button
     privacyPolicy: URL(string: "https://yourapp.com/privacy"),
     copyrightText: "©2025 Your Company. All rights reserved.",
     appsShowcaseURL: URL(string: "https://yourapp.com/apps.json"),
@@ -81,6 +82,7 @@ AppAboutView(
     feedbackEmailSubject: "Support Request",
     feedbackEmailBody: "Describe your issue here...",
     appStoreID: "987654321",
+    showsRateAppButton: false,
     privacyPolicy: URL(string: "https://myapp.com/privacy"),
     copyrightText: "©2025 My Company Inc.",
     onAcknowledgments: { 
