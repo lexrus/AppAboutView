@@ -35,6 +35,7 @@ public struct AppAboutView: View {
     let additionalLinks: [AdditionalLink]
     let appsShowcaseURL: URL?
     let coffeeTips: [String]?
+    let showsRateAppButton: Bool
 
     public init(
         appName: String = "App",
@@ -50,7 +51,8 @@ public struct AppAboutView: View {
         onAcknowledgments: (() -> Void)? = nil,
         additionalLinks: [AdditionalLink] = [],
         appsShowcaseURL: URL? = nil,
-        coffeeTips: [String]? = nil
+        coffeeTips: [String]? = nil,
+        showsRateAppButton: Bool = true
     ) {
         self.appName = appName
         self.appIcon = appIcon
@@ -66,6 +68,7 @@ public struct AppAboutView: View {
         self.additionalLinks = additionalLinks
         self.appsShowcaseURL = appsShowcaseURL
         self.coffeeTips = coffeeTips
+        self.showsRateAppButton = showsRateAppButton
     }
 
     public var body: some View {
@@ -295,19 +298,20 @@ public struct AppAboutView: View {
     internal func buildSettingsButtons() -> [AnyView] {
         var buttons: [AnyView] = []
 
-        // Always include Rate on App Store button
-        buttons.append(AnyView(
-            settingsButton(
-                String(
-                    localized: "AppAboutView.RateOnAppStore",
-                    bundle: .module
-                ),
-                icon: Image(systemName: "star.fill")
-            ) {
-                openAppStoreURL()
-            }
-            .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
-        ))
+        if showsRateAppButton {
+            buttons.append(AnyView(
+                settingsButton(
+                    String(
+                        localized: "AppAboutView.RateOnAppStore",
+                        bundle: .module
+                    ),
+                    icon: Image(systemName: "star.fill")
+                ) {
+                    openAppStoreURL()
+                }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
+            ))
+        }
 
         if privacyPolicy != nil {
             buttons.append(AnyView(
@@ -374,19 +378,20 @@ public struct AppAboutView: View {
     internal func buildSettingsButtonsForNonMac() -> [AnyView] {
         var buttons: [AnyView] = []
 
-        // Always include Rate on App Store button
-        buttons.append(AnyView(
-            settingsButton(
-                String(
-                    localized: "AppAboutView.RateOnAppStore",
-                    bundle: .module
-                ),
-                icon: Image(systemName: "star.fill")
-            ) {
-                openAppStoreURL()
-            }
-            .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
-        ))
+        if showsRateAppButton {
+            buttons.append(AnyView(
+                settingsButton(
+                    String(
+                        localized: "AppAboutView.RateOnAppStore",
+                        bundle: .module
+                    ),
+                    icon: Image(systemName: "star.fill")
+                ) {
+                    openAppStoreURL()
+                }
+                .accessibilityHint(String(localized: "AppAboutView.Accessibility.RateApp", bundle: .module))
+            ))
+        }
 
         if feedbackEmail != nil {
             buttons.append(AnyView(
@@ -607,7 +612,8 @@ public extension AppAboutView {
         onAcknowledgments: (() -> Void)? = nil,
         additionalLinks: [AdditionalLink] = [],
         appsShowcaseURL: URL? = nil,
-        coffeeTips: [String]? = nil
+        coffeeTips: [String]? = nil,
+        showsRateAppButton: Bool = true
     ) -> AppAboutView {
         let bundle = Bundle.main
         let defaultAppName = bundle.infoDictionary?["CFBundleName"] as? String ?? "App"
@@ -647,7 +653,8 @@ public extension AppAboutView {
             onAcknowledgments: onAcknowledgments,
             additionalLinks: additionalLinks,
             appsShowcaseURL: appsShowcaseURL,
-            coffeeTips: coffeeTips
+            coffeeTips: coffeeTips,
+            showsRateAppButton: showsRateAppButton
         )
     }
 }
