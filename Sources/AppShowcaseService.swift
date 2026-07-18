@@ -53,6 +53,8 @@ public class AppShowcaseService: ObservableObject {
             if let dateString = appsData.lastUpdated.iso8601Date {
                 self.lastUpdated = dateString
             }
+
+            prefetchIcons(for: self.apps)
         } catch {
             print("Failed to load local apps: \(error)")
         }
@@ -68,6 +70,8 @@ public class AppShowcaseService: ObservableObject {
             if let dateString = appsData.lastUpdated.iso8601Date {
                 self.lastUpdated = dateString
             }
+
+            prefetchIcons(for: self.apps)
         } catch {
             print("Failed to load cached apps: \(error)")
         }
@@ -86,9 +90,20 @@ public class AppShowcaseService: ObservableObject {
             if let dateString = appsData.lastUpdated.iso8601Date {
                 self.lastUpdated = dateString
             }
+
+            // Warm the icon disk cache in the background so the *next* time the
+            // About page is shown every icon renders from cache on the first frame.
+            prefetchIcons(for: self.apps)
         } catch {
             print("Failed to fetch remote apps: \(error)")
         }
+    }
+
+    /// Fire-and-forget prefetch of all icon URLs into the shared `ImageCache`.
+    /// Runs off the UI critical path; only fills the cache, never updates state.
+    private func prefetchIcons(for apps: [MyAppInfo]) {
+        let urls = apps.compactMap(\.iconURL)
+        ImageCache.shared.prefetch(urlStrings: urls)
     }
 
     private func filterCurrentApp(from apps: [MyAppInfo]) -> [MyAppInfo] {

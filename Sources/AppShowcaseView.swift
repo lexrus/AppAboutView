@@ -229,7 +229,13 @@ struct AppShowcaseItemView: View {
 
     @ViewBuilder
     private func iconContent() -> some View {
-        if let iconURL = app.iconURL {
+        // Prefer a bundled icon (synchronous, zero I/O) so the list renders fully on
+        // the first frame. Fall back to the cached/async path only when the bundle
+        // has no icon for this app. `iconURL` stays valuable as the prefetch source
+        // and as the remote fallback for apps without a bundled asset.
+        if loadLocalAppIcon() != nil {
+            localIconOrPlaceholder()
+        } else if let iconURL = app.iconURL {
             CachedAsyncImage(
                 urlString: iconURL,
                 content: { image in
